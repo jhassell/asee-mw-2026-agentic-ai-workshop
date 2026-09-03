@@ -1,0 +1,17 @@
+# ASEE PEER papers are licensed for private, per-participant, session-scoped
+# use only (permission granted 2026-08-26). They must NEVER be committed to
+# this public repository. They arrive at setup time from the private corpus
+# repo. Do not remove these lines; do not `git add -f` them.
+corpus/papers/
+corpus/*.tar.gz
+*.tar.gz
+
+# Local secrets — nothing with a key in it belongs in git.
+.env
+*.key
+workshop-key.txt
+
+# Junk
+__pycache__/
+.DS_Store
+/tmp/

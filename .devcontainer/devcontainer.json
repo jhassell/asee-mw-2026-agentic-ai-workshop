@@ -1,0 +1,21 @@
+{
+  "name": "ASEE MW 2026 - From Chatbots to Agents",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+  },
+  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  "forwardPorts": [18789, 8000],
+  "portsAttributes": {
+    "18789": { "label": "OpenClaw gateway" },
+    "8000": { "label": "Agent-built dashboards" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "mechatroner.rainbow-csv"
+      ]
+    }
+  }
+}
