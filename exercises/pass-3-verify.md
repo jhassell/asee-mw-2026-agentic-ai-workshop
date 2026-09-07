@@ -12,13 +12,13 @@ here, not at the agent.
 Copy, paste, Enter:
 
 ```
-grep -h '^title:' corpus/papers/*.md | sort | uniq -d
+grep -ah '^title:' corpus/papers/*.md | sort | uniq -d
 ```
 
 If two files share a title, one title prints. Find the two files:
 
 ```
-grep -l "PASTE THE TITLE HERE" corpus/papers/*.md
+grep -al "PASTE THE TITLE HERE" corpus/papers/*.md
 ```
 
 Open both. Compare the `paper_id` at the top with the "Paper ID" line in
