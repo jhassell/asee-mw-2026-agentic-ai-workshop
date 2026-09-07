@@ -1,7 +1,7 @@
 # Pass 1: ask badly
 
 **Where you are:** the agent prompt is open in your terminal. If it is not,
-type `openclaw` and press Enter.
+type `openclaw chat` and press Enter.
 
 Copy this line, paste it at the agent prompt, press Enter, and do not help
 it:
@@ -28,5 +28,5 @@ way on a task you cared about?
 ## If this went wrong
 
 - Nothing happened for two minutes: raise a hand.
-- `command not found`: type `openclaw` and press Enter, then paste again.
+- `command not found`: type `openclaw chat` and press Enter, then paste again.
 - It asked you a question: answer "just do your best" and press Enter.

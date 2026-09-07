@@ -50,7 +50,7 @@ You'll receive a **seat card** with a workshop code on it. Then:
 5. Start the agent:
 
    ```bash
-   openclaw
+   openclaw chat
    ```
 
 The setup step downloads the workshop paper corpus and configures the agent

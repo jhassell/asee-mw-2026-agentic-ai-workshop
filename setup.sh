@@ -91,10 +91,11 @@ command -v openclaw >/dev/null 2>&1 || die "OpenClaw is not installed yet." \
   "The container may still be finishing. Wait 30 seconds, then re-run: bash setup.sh"
 
 echo "Configuring OpenClaw..."
-openclaw onboard --auth-choice apiKey \
-  --token-provider openrouter \
-  --token "$OPENROUTER_API_KEY" >/dev/null 2>&1 || true
-
+export WORKSHOP_ROOT="$ROOT"
+# Write the config directly (OpenClaw 2026.9+ schema): the key under env.vars,
+# the model pinned as primary and allow-listed, memory search off (it would
+# otherwise try to reach an OpenAI embeddings endpoint and log errors on every
+# turn). Then let doctor normalize anything version-specific.
 python3 - "$MODEL" <<'PYEOF'
 import json, os, sys
 model = sys.argv[1]
@@ -104,21 +105,46 @@ if os.path.exists(path):
     with open(path) as f:
         try: cfg = json.load(f)
         except Exception: cfg = {}
-cfg.setdefault("env", {})["OPENROUTER_API_KEY"] = os.environ["OPENROUTER_API_KEY"]
-agents = cfg.setdefault("agents", {}).setdefault("defaults", {})
-agents.setdefault("model", {})["primary"] = model
-agents.setdefault("models", {})[model] = {}
+cfg.setdefault("env", {}).setdefault("vars", {})["OPENROUTER_API_KEY"] = os.environ["OPENROUTER_API_KEY"]
+d = cfg.setdefault("agents", {}).setdefault("defaults", {})
+d.setdefault("model", {})["primary"] = model
+d.setdefault("modelPolicy", {})["allow"] = [model]
+d.pop("models", None)
+# Run the agent inside the workshop repo so coverage-report.md, coverage.png
+# and my-positioning.md land where the editor shows them.
+d["cwd"] = os.environ["WORKSHOP_ROOT"]
+cfg.setdefault("memory", {}).setdefault("search", {})["enabled"] = False
 os.makedirs(os.path.dirname(path), exist_ok=True)
 with open(path, "w") as f:
     json.dump(cfg, f, indent=2)
 print("✅ OpenClaw pinned to", model)
 PYEOF
+openclaw doctor --fix >/dev/null 2>&1 || true
+# OpenClaw's workspace ships a first-run "introduce yourself and pick a name"
+# ritual (BOOTSTRAP.md) that would hijack a participant's first prompt.
+# Remove it and give the agent a fixed identity.
+WS="$HOME/.openclaw/workspace"
+mkdir -p "$WS"
+rm -f "$WS/BOOTSTRAP.md"
+cat > "$WS/IDENTITY.md" <<'IDEOF'
+# IDENTITY.md - Who Am I?
+
+- **Name:** Workshop Agent
+- **Creature:** AI coding agent
+- **Vibe:** plain, careful, shows its work
+- **Emoji:** 🔧
+IDEOF
+if ! openclaw config validate >/dev/null 2>&1; then
+  die "OpenClaw did not accept its configuration." \
+      "Re-run: bash setup.sh   — if it repeats, raise a hand."
+fi
+echo "✅ OpenClaw configuration valid."
 
 echo
 hr
 echo "  READY."
 echo
-echo "  Start the agent:   openclaw"
+echo "  Start the agent:   openclaw chat"
 echo "  Papers:            corpus/papers/   (${COUNT} files)"
 echo "  Exercises:         exercises/"
 hr
