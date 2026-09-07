@@ -2,7 +2,8 @@
   "name": "ASEE MW 2026 - From Chatbots to Agents",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
+    "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" }
   },
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
   "forwardPorts": [18789, 8000],
