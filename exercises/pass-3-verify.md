@@ -27,10 +27,11 @@ count, and are both of these files in the same theme?
 
 ## Move 2: outside the sandbox
 
-Look at section 3 of your report, the gaps. Take the paper it cited for the
-gap you found most interesting. Copy its title. In a new browser tab, go to
-<https://peer.asee.org> and search for that title. Then search for the
-first author's name.
+Look at section 4 of your report, "Where the evidence is strongest." Take
+the paper ranked first, the one you would cite tomorrow. Copy its title. In
+a new browser tab, go to <https://peer.asee.org> and search for that title.
+Then search for the first author's name. Then do the same for the paper
+ranked second, so you have a comparison.
 
 Write on your exit card, lines 2 and 3: the claim you checked and what you
 found; and what your report now has to say instead.
@@ -54,7 +55,7 @@ be re-derived or withdrawn.
 
 - Move 1 printed nothing: you typed at the agent prompt. Open a new
   terminal (Terminal > New Terminal) and try again.
-- You do not know which paper your report cited: open
-  `coverage-report.md` and read section 3.
+- You do not know which paper your report ranked first: open
+  `coverage-report.md` and read section 4.
 - peer.asee.org is slow on the conference wifi: try
   <https://scholar.google.com> with the title in quotes.

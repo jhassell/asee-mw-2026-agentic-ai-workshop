@@ -18,7 +18,7 @@ Before you start, `bash setup.sh` must have printed **READY**, and
 | | File | What you do |
 |---|---|---|
 | 1 | [`pass-1-underspecified.md`](pass-1-underspecified.md) | Ask badly. See what you get. |
-| 2 | [`pass-2-specified.md`](pass-2-specified.md) | Ask well, with one criterion you wrote yourself. Supervise while it runs. |
+| 2 | [`pass-2-specified.md`](pass-2-specified.md) | Ask well, with one criterion you wrote yourself. Supervise while it runs. The report ends with the three strongest findings in the set. |
 | 3 | [`pass-3-verify.md`](pass-3-verify.md) | Check before you believe. Then correct the folder. |
 | 4 | [`your-idea.md`](your-idea.md) | Point the same agent at your own paper or course. |
 | 5 | [`adapt-one-line.md`](adapt-one-line.md) | Write one change to one assignment, and the rubric line that grades it. |

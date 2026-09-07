@@ -3,7 +3,7 @@
 Same task. Now with the three things the room just asked for: what exactly
 to look at, what shape the answer takes, and how we will know it is right.
 
-**Write criterion 4 before you paste.** It is the one line in this file that
+**Write criterion 5 before you paste.** It is the one line in this file that
 is yours. Take it from what the room said it would need in order to trust
 the answer. Copy it onto your exit card too.
 
@@ -23,13 +23,21 @@ coverage-report.md containing:
   3. Three themes you would expect to find in an AI-in-engineering-
      education track that have 0 to 2 papers here. For each gap, cite
      the ONE paper in the corpus that comes closest: paper_id and title.
+  4. "Where the evidence is strongest": read ONLY the "## Abstract"
+     section of each file (extend your script; do not read full papers)
+     and list the three papers with the strongest quantitative evidence
+     of an effect on student outcomes: a controlled or comparative
+     design, a sample size, an effect size or a percentage change. For
+     each: paper_id, title, the design in five words, the key number.
+     Rank them, strongest first.
 Also save coverage.png, a horizontal bar chart of papers per theme, using
 matplotlib.
 Acceptance criteria:
   (1) every paper_id appears in exactly one theme;
   (2) the counts in the table sum to the number of files in the folder;
   (3) every paper_id you cite exists as a file in corpus/papers/;
-  (4) [WRITE YOUR OWN CRITERION HERE]
+  (4) every number you quote in section 4 appears in that paper's abstract;
+  (5) [WRITE YOUR OWN CRITERION HERE]
 ```
 
 ## While it runs, you are the supervisor
@@ -52,7 +60,7 @@ Open `coverage-report.md` and `coverage.png` in the editor (click them in the
 file list on the left).
 
 Then look at the spec again. Which words changed a paragraph into a table?
-Was your criterion 4 met? Underline the words that did the work.
+Was your criterion 5 met? Underline the words that did the work.
 
 ## If this went wrong
 
