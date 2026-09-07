@@ -31,47 +31,68 @@ else
   echo "Could not refresh exercise files (offline or local edits); continuing."
 fi
 
-# ---------------------------------------------------------------- 1. the code
-CODE="${WORKSHOP_CODE:-}"
-if [ -z "$CODE" ]; then
-  printf "Paste the workshop code from your seat card, then press Enter.\n(The screen will not show it as you paste.)\n> "
-  read -rs CODE </dev/tty
-  echo
+# ------------------------------------------------- 1. code, or your own key
+# Two ways in. At the workshop: the seat-card code, which unlocks the papers
+# and the model key. Afterwards: a file named my-openrouter.key in this
+# folder containing your own OpenRouter key (see exercises/keep-it-running.md).
+# *.key is gitignored, so it can never be committed.
+OWN_KEY_FILE="$ROOT/my-openrouter.key"
+OWN=0
+if [ -z "${WORKSHOP_CODE:-}" ] && [ -s "$OWN_KEY_FILE" ]; then
+  OWN=1
+  echo "Using your own key from my-openrouter.key (no workshop code needed)."
 fi
-CODE="$(printf '%s' "$CODE" | tr -d '[:space:]')"
-[ -n "$CODE" ] || die "No code entered." \
-  "Re-run: bash setup.sh   — then paste the code from your seat card."
-
-# ------------------------------------------------------- 2. fetch the bundle
-echo "Unlocking workshop materials..."
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
-if ! git clone --depth 1 --quiet \
-      "https://x-access-token:${CODE}@github.com/${CORPUS_REPO}.git" \
-      "$TMP/bundle" 2>"$TMP/err"; then
-  die "That workshop code was rejected." \
-      "Check for a missing character or a stray space, then re-run: bash setup.sh"
-fi
-echo "✅ Code accepted."
 
-# --------------------------------------------------------------- 3. the corpus
-if [ ! -d "$TMP/bundle/papers" ]; then
-  die "The bundle downloaded but contains no papers/ folder." \
-      "This is a facilitator-side problem, not yours. Raise a hand."
-fi
-mkdir -p "$ROOT/corpus/papers"
-cp "$TMP/bundle/papers/"*.md "$ROOT/corpus/papers/" 2>/dev/null
-COUNT="$(find "$ROOT/corpus/papers" -name '*.md' | wc -l | tr -d ' ')"
-[ "$COUNT" -gt 0 ] || die "No papers were copied." \
-      "Re-run: bash setup.sh   — if it repeats, raise a hand."
-echo "✅ Corpus ready — ${COUNT} papers in corpus/papers/"
+if [ "$OWN" -eq 0 ]; then
+  CODE="${WORKSHOP_CODE:-}"
+  if [ -z "$CODE" ]; then
+    printf "Paste the workshop code from your seat card, then press Enter.\n(The screen will not show it as you paste.)\n> "
+    read -rs CODE </dev/tty
+    echo
+  fi
+  CODE="$(printf '%s' "$CODE" | tr -d '[:space:]')"
+  [ -n "$CODE" ] || die "No code entered." \
+    "Re-run: bash setup.sh   — then paste the code from your seat card."
 
-# ------------------------------------------------------------ 4. model access
-OPENROUTER_API_KEY="$(tr -d '[:space:]' < "$TMP/bundle/openrouter.key" 2>/dev/null || true)"
-[ -n "$OPENROUTER_API_KEY" ] || die "The bundle is missing the model key." \
-      "This is a facilitator-side problem, not yours. Raise a hand."
+  # ----------------------------------------------------- 2. fetch the bundle
+  echo "Unlocking workshop materials..."
+  if ! git clone --depth 1 --quiet \
+        "https://x-access-token:${CODE}@github.com/${CORPUS_REPO}.git" \
+        "$TMP/bundle" 2>"$TMP/err"; then
+    die "That workshop code was rejected." \
+        "Check for a missing character or a stray space, then re-run: bash setup.sh"
+  fi
+  echo "✅ Code accepted."
+
+  # ------------------------------------------------------------- 3. the corpus
+  if [ ! -d "$TMP/bundle/papers" ]; then
+    die "The bundle downloaded but contains no papers/ folder." \
+        "This is a facilitator-side problem, not yours. Raise a hand."
+  fi
+  mkdir -p "$ROOT/corpus/papers"
+  cp "$TMP/bundle/papers/"*.md "$ROOT/corpus/papers/" 2>/dev/null
+  COUNT="$(find "$ROOT/corpus/papers" -name '*.md' | wc -l | tr -d ' ')"
+  [ "$COUNT" -gt 0 ] || die "No papers were copied." \
+        "Re-run: bash setup.sh   — if it repeats, raise a hand."
+  echo "✅ Corpus ready — ${COUNT} papers in corpus/papers/"
+  OPENROUTER_API_KEY="$(tr -d '[:space:]' < "$TMP/bundle/openrouter.key" 2>/dev/null || true)"
+  [ -n "$OPENROUTER_API_KEY" ] || die "The bundle is missing the model key." \
+        "This is a facilitator-side problem, not yours. Raise a hand."
+else
+  # Own-key mode: no workshop papers (the ASEE permission covered the
+  # session only). Use whatever .md files you put in corpus/papers/.
+  mkdir -p "$ROOT/corpus/papers"
+  COUNT="$(find "$ROOT/corpus/papers" -name '*.md' | wc -l | tr -d ' ')"
+  echo "ℹ️  corpus/papers/ holds ${COUNT} .md files. Add your own documents there."
+  OPENROUTER_API_KEY="$(tr -d '[:space:]' < "$OWN_KEY_FILE")"
+  [ -n "$OPENROUTER_API_KEY" ] || die "my-openrouter.key is empty." \
+        "Paste your OpenRouter key into that file (one line) and re-run: bash setup.sh"
+fi
 export OPENROUTER_API_KEY
 
+# ------------------------------------------------------------ 4. model access
 echo "Checking model access..."
 HTTP="$(curl -s -m 20 -o "$TMP/keycheck.json" -w '%{http_code}' \
   https://openrouter.ai/api/v1/key \
@@ -80,8 +101,13 @@ case "$HTTP" in
   200) echo "✅ Model access OK." ;;
   000) die "Could not reach OpenRouter (network)." \
            "Check your wifi, then re-run: bash setup.sh" ;;
-  401|402|403) die "The workshop model key was rejected (HTTP $HTTP)." \
-           "This is a facilitator-side problem, not yours. Raise a hand." ;;
+  401|402|403) if [ "$OWN" -eq 1 ]; then
+           die "OpenRouter rejected the key in my-openrouter.key (HTTP $HTTP)." \
+               "Check the key at openrouter.ai/settings/keys, fix the file, re-run: bash setup.sh"
+         else
+           die "The workshop model key was rejected (HTTP $HTTP)." \
+               "This is a facilitator-side problem, not yours. Raise a hand."
+         fi ;;
   *)   die "Unexpected response from OpenRouter (HTTP $HTTP)." \
            "Re-run: bash setup.sh   — if it repeats, raise a hand." ;;
 esac

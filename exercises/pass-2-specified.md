@@ -7,7 +7,7 @@ to look at, what shape the answer takes, and how we will know it is right.
 is yours. Take it from what the room said it would need in order to trust
 the answer. Copy it onto your exit card too.
 
-Copy everything between the lines, fill in criterion 4, paste it at the
+Copy everything between the lines, fill in criterion 5, paste it at the
 agent prompt, and press Enter.
 
 ```
@@ -23,13 +23,13 @@ coverage-report.md containing:
   3. Three themes you would expect to find in an AI-in-engineering-
      education track that have 0 to 2 papers here. For each gap, cite
      the ONE paper in the corpus that comes closest: paper_id and title.
-  4. "Where the evidence is strongest": read ONLY the "## Abstract"
-     section of each file (extend your script; do not read full papers)
-     and list the three papers with the strongest quantitative evidence
-     of an effect on student outcomes: a controlled or comparative
-     design, a sample size, an effect size or a percentage change. For
-     each: paper_id, title, the design in five words, the key number.
-     Rank them, strongest first.
+  4. "Claims worth verifying": read ONLY the "## Abstract" section of
+     each file (extend your script; do not read full papers) and list the
+     three papers that make the strongest quantitative claims about
+     student outcomes: a controlled or comparative design, a sample size,
+     an effect size or a percentage change. For each: paper_id, title,
+     the design in five words, the key number. Rank them by how much you
+     would want to verify before citing, first = most.
 Also save coverage.png, a horizontal bar chart of papers per theme, using
 matplotlib.
 Acceptance criteria:
@@ -46,7 +46,7 @@ Three things to watch for, and what to type at the agent prompt:
 
 | You see | You type |
 |---|---|
-| It starts opening full papers one after another | `Stop. Use the frontmatter only, as the spec says.` |
+| It starts opening full papers one after another | `Stop. Frontmatter for the themes, the Abstract section only for section 4, as the spec says.` |
 | It asks you a question | Answer it in one line. |
 | It says it is done but there is no `coverage.png` | `The chart is missing. Finish the spec.` |
 | Nothing has scrolled for two minutes | Raise a hand. |

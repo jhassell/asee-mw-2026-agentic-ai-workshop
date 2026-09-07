@@ -2,6 +2,12 @@
 
 Point the same agent at your own work.
 
+**First, pick the screen you will use.** If your own Codespace reached
+READY, use it now, and run the correction there too: in its plain
+terminal, `ls corpus/papers | wc -l` must show the corrected count before
+you go on. If yours never reached READY, stay with your partner and you
+type this one; you will still leave with your own `my-positioning.md`.
+
 **Before you paste:** your text goes to a third-party model over the
 internet. Paste only what you would put in a public abstract. No student
 data, no unpublished results you are not ready to share.
@@ -15,7 +21,9 @@ Here is a research or teaching idea I am considering:
 [EITHER paste the abstract of a paper you wrote or are writing, OR type
 three sentences about your course or an assignment you want to change.]
 
-Using ONLY the files now in corpus/papers/, write my-positioning.md with:
+Using ONLY the files now in corpus/papers/ (ignore anything you or I
+concluded earlier in this conversation, and any earlier report), write
+my-positioning.md with:
   1. The five papers closest to this idea. For each: paper_id, title,
      one sentence on how it relates to my idea, and ONE SENTENCE QUOTED
      VERBATIM from the file that supports what you said.
@@ -36,15 +44,22 @@ Open `my-positioning.md`. Then two checks, both required:
    quoted sentence. Is it there, and does it say what the brief claims?
 2. Search that paper's title on <https://peer.asee.org>. Is it real?
 
-You just removed the file that would have failed check 2. The habit is to
-run the check anyway.
+Check 2 would have failed for the file you removed. The habit is to run
+it anyway. A miss means "not verified," not "fake."
+
+Take a photo of your card, or copy `my-positioning.md` somewhere you own,
+before the session ends.
 
 Be ready to answer, in one sentence: what did the corpus tell you that you
 did not know, and did the quotation hold up?
 
 ## To take home
 
-`my-positioning.md`, and this prompt. The prompt works unchanged on any
-folder of papers you have the right to use. What it produces is a quick map
-from titles and key terms, not a literature review; treat section 3 as a
-lead to check, not a finding.
+`my-positioning.md`, and this prompt. This prompt works on any folder of
+Markdown or text documents you have the right to use; it reads the files
+themselves. The pass-2 coverage spec is different: it expects each file to
+have YAML frontmatter with `paper_id`, `title`, and `key_terms`, and an
+`## Abstract` heading. On your own documents, rewrite its first sentence to
+describe what your files actually contain. What either prompt produces is a
+quick map, not a literature review; treat section 3 as a lead to check, not
+a finding.

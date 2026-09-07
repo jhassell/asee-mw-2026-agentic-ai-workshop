@@ -64,7 +64,7 @@ raising a hand is always a valid next step.
 You'll run one task three times against a corpus of engineering-education
 papers, and watch the output change:
 
-1. **Underspecified.** A vague prompt. Plausible, shallow output.
+1. **Underspecified.** A vague prompt. Confident, readable, and nothing in it you can check.
 2. **Specified.** The same task with explicit scope, format, and acceptance
    criteria, one of which you write yourself. The difference is visible
    immediately.
@@ -105,7 +105,7 @@ it at <https://github.com/codespaces> when the session ends.
 | `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |
 | "That workshop code was rejected" | A character is missing or a space slipped in. Re-run `bash setup.sh` and paste again. |
 | `openclaw: command not found` | The container is still finishing. Wait 30 seconds, then re-run `bash setup.sh`. |
-| Codespace won't start | Delete any old ones at <https://github.com/codespaces>, then create a new one. |
+| Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee-mw-2026-agentic-ai-workshop), then create a new one. Leave any other Codespaces alone. |
 | Anything else | Raise a hand. |
 
 ---

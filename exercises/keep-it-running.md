@@ -14,16 +14,24 @@ a key. Here is how to have your own, for about the cost of a lunch.
    minute for your whole account.
 3. **Open a Codespace on your fork** (Code > Codespaces > Create codespace
    on main).
-4. **In the terminal:**
+4. **Create one file and run setup.** In the terminal:
    ```
-   openclaw onboard
+   nano my-openrouter.key
    ```
-   Paste your OpenRouter key when asked. Then open
-   `~/.openclaw/openclaw.json` and confirm the model under `agents.defaults`
-   is `openrouter/google/gemini-3.7-flash`, or any model you prefer.
+   Paste your key on one line, press Ctrl+O, Enter, Ctrl+X. Then:
+   ```
+   bash setup.sh
+   ```
+   With that file present, setup skips the workshop code, applies the same
+   configuration the workshop used, and prints READY. Start the agent with
+   `openclaw chat`, as before. The file is gitignored and cannot be
+   committed by accident.
 5. **The ASEE papers are not in your fork and cannot be.** The permission
    covered this session only. Put your own papers, syllabi, or student-safe
-   documents in `corpus/papers/` and the prompts work unchanged.
+   Markdown or text documents in `corpus/papers/`. The your-idea prompt
+   works on them as is. The pass-2 coverage spec expects YAML frontmatter
+   (`paper_id`, `title`, `key_terms`) and an `## Abstract` heading; on
+   your own files, rewrite its first sentence to say what they contain.
 
 What it costs: a session like today's uses well under a dollar. A student
 running the starter assignment for a week uses roughly two to five dollars.
