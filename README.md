@@ -66,9 +66,14 @@ papers, and watch the output change:
 
 1. **Underspecified.** A vague prompt. Plausible, shallow output.
 2. **Specified.** The same task with explicit scope, format, and acceptance
-   criteria. The difference is visible immediately.
-3. **Verify.** The corpus contains seeded defects. If you don't check the
-   agent's work, you will confidently report things that aren't true.
+   criteria, one of which you write yourself. The difference is visible
+   immediately.
+3. **Verify.** If you don't check the agent's work against something
+   outside the agent, you will confidently report things that aren't true.
+
+Then you point the same agent at your own paper or course, and you write
+one change to one assignment you teach. The files are in
+[`exercises/`](exercises/).
 
 The takeaway is not "AI is good" or "AI is bad." It's that output quality is
 a function of how well you direct and supervise the agent — a habit you can

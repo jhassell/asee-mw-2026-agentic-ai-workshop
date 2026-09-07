@@ -22,6 +22,15 @@ die() {
 
 hr; echo " From Chatbots to Agents — setup"; hr
 
+# ---------------------------------------------------- 0. latest exercises
+# A Codespace created before the conference has whatever was pushed then.
+# Best effort: pull the current files, never fail setup over it.
+if git -C "$ROOT" pull --ff-only --quiet 2>/dev/null; then
+  echo "Exercise files are up to date."
+else
+  echo "Could not refresh exercise files (offline or local edits); continuing."
+fi
+
 # ---------------------------------------------------------------- 1. the code
 CODE="${WORKSHOP_CODE:-}"
 if [ -z "$CODE" ]; then
