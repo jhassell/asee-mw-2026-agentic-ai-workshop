@@ -6,7 +6,10 @@ Point the same agent at your own work.
 READY, use it now, and run the correction there too: in its plain
 terminal, `ls corpus/papers | wc -l` must show the corrected count before
 you go on. If yours never reached READY, stay with your partner and you
-type this one; you will still leave with your own `my-positioning.md`.
+type this one. Two people on one screen run the prompt twice, one after
+the other. The second person changes `my-positioning.md` to
+`my-positioning-2.md` in the prompt before pasting (it appears once), so
+the first brief is not overwritten. Each of you leaves with your own file.
 
 **Before you paste:** your text goes to a third-party model over the
 internet. Paste only what you would put in a public abstract. No student
@@ -28,7 +31,7 @@ my-positioning.md with:
      one sentence on how it relates to my idea, and ONE SENTENCE QUOTED
      VERBATIM from the file that supports what you said.
   2. What these papers already establish that I could build on.
-  3. What none of the 77 papers in this set appears to address that my
+  3. What none of the papers in this folder appears to address that my
      idea would add. Say "appears," and say what you based that on.
   4. Three questions a reviewer would ask me that I should be able to
      answer.
@@ -38,7 +41,8 @@ quotations.
 
 ## When it finishes
 
-Open `my-positioning.md`. Then two checks, both required:
+Open your brief (`my-positioning.md`, or `my-positioning-2.md` if you
+ran second). Then two checks, both required:
 
 1. Pick one of the five papers. Open it in `corpus/papers/` and find the
    quoted sentence. Is it there, and does it say what the brief claims?
@@ -47,17 +51,21 @@ Open `my-positioning.md`. Then two checks, both required:
 Check 2 would have failed for the file you removed. The habit is to run
 it anyway. A miss means "not verified," not "fake."
 
-Take a photo of your card, or copy `my-positioning.md` somewhere you own,
-before the session ends.
+If the facilitator says there is time for only one check, do check 1 now,
+write *provisional* on the first line of your brief, and do check 2 before
+you use the brief for anything.
+
+Take a photo of your card, or copy your brief somewhere you own, before
+the session ends.
 
 Be ready to answer, in one sentence: what did the corpus tell you that you
 did not know, and did the quotation hold up?
 
 ## To take home
 
-`my-positioning.md`, and this prompt. This prompt works on any folder of
-Markdown or text documents you have the right to use; it reads the files
-themselves. The pass-2 coverage spec is different: it expects each file to
+Your brief, and this prompt. The prompt names no paper count and no
+corpus, so it works unchanged on any folder of Markdown or text documents
+you have the right to use; it reads the files themselves. The pass-2 coverage spec is different: it expects each file to
 have YAML frontmatter with `paper_id`, `title`, and `key_terms`, and an
 `## Abstract` heading. On your own documents, rewrite its first sentence to
 describe what your files actually contain. What either prompt produces is a
