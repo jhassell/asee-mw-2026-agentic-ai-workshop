@@ -38,6 +38,8 @@ Safari) and that you can type on comfortably for 90 minutes.
 
 You'll receive a **seat card** with a workshop code on it. Then:
 
+0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
+   accept, then check that <https://github.com> loads.
 1. Open your Codespace (**Code** → **Codespaces** → **Create codespace on main**).
 2. In the terminal at the bottom of the window, run:
 
