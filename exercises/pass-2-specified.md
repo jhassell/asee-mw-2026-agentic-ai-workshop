@@ -21,8 +21,10 @@ coverage-report.md containing:
   2. The three most-covered themes, with one sentence each on what they
      have in common.
   3. Three themes you would expect to find in an AI-in-engineering-
-     education track that have 0 to 2 papers here. For each gap, cite
-     the ONE paper in the corpus that comes closest: paper_id and title.
+     education track that have 0 to 2 papers IN THIS CORPUS. For each,
+     cite the ONE paper in the corpus that comes closest: paper_id and
+     title. Say "thin in this corpus," never "missing from the
+     literature" — 79 selected papers are not the literature.
   4. "Claims worth verifying": read ONLY the "## Abstract" section of
      each file (extend your script; do not read full papers) and list the
      three papers that make the strongest quantitative claims about
@@ -61,6 +63,12 @@ file list on the left).
 
 Then look at the spec again. Which words changed a paragraph into a table?
 Was your criterion 5 met? Underline the words that did the work.
+
+One thing to notice about section 3 while you are there: the agent can tell you
+what is thin in *this folder*. It cannot tell you what is missing from your
+field, and neither can you without a search method you could defend. If your
+report slid from one to the other, that is the same overclaim we are here to
+catch — made by you this time, not by the agent.
 
 ## If this went wrong
 

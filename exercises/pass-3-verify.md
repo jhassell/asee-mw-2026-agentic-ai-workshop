@@ -36,12 +36,25 @@ browser tab, go to <https://peer.asee.org> and search for that title. Then
 search for the first author's name. Then do the same for the paper ranked
 second, so you have a comparison.
 
-Three different things, and only the first two are checks you can run here:
+Three different things, and only the first two are checks you can run here.
+This is the whole workshop in three words — **Source, Claim, Evidence**:
 
-- Finding a quotation in the file shows the paper *says* it.
-- Finding the paper on PEER shows the paper *exists*.
-- Neither shows the conclusion is *well supported*. Big numbers in an
-  abstract are a reason to read the methods, not a reason to trust them.
+- **Source** — finding the paper on PEER shows it *exists*.
+- **Claim** — finding a quotation in the file shows the paper *says* it.
+- **Evidence** — neither of those shows the conclusion is *well supported*. Big
+  numbers in an abstract are a reason to read the methods, not a reason to
+  trust them.
+
+PEER is our independent authority today only because these are ASEE papers.
+**The habit is the part that travels, not the website.** Before you leave, answer
+this one for yourself and write it on your card:
+
+> In my field, what would I check against instead of PEER?
+
+Crossref or a DOI resolver, a patent database, a standards body, a clinical
+trial registry, the actual source code, the dataset, the statute, the vendor's
+own documentation. Whatever it is, it has to be something the agent did not
+hand you.
 
 If a search finds nothing, write "not verified," not "fake." A search can
 miss a real paper. What makes a paper fake is evidence, and you will hear

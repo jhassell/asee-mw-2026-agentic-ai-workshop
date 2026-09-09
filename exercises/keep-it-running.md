@@ -1,5 +1,13 @@
 # Keeping this environment after today
 
+**Be clear about what is yours to keep.** The environment you used today is
+temporary by design: it holds papers ASEE licensed for this session only, and a
+model key that belongs to the workshop, and both go away. What you keep is
+everything needed to stand the same environment back up with your own key and
+your own documents — the repository, the setup script, the prompts, and the
+exercises. That is the durable takeaway, and it is about ten minutes of work
+below.
+
 Your seat-card code stops working after the conference, and the AI key it
 fetched goes with it. Your Codespace keeps working until you delete it or
 GitHub retires it after 30 days of inactivity, but a fresh one will not have

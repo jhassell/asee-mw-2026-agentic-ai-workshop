@@ -11,9 +11,18 @@ the other. The second person changes `my-positioning.md` to
 `my-positioning-2.md` in the prompt before pasting (it appears once), so
 the first brief is not overwritten. Each of you leaves with your own file.
 
-**Before you paste:** your text goes to a third-party model over the
-internet. Paste only what you would put in a public abstract. No student
-data, no unpublished results you are not ready to share.
+**Before you paste — read this, it is the one rule in this file.** Your text
+goes to a third-party model over the internet, and it leaves your control when
+it does. **Use only material you would be comfortable sending to an outside
+company.** That means: no student records or student work, no confidential or
+unpublished manuscripts, no material you are reviewing for a journal or
+conference, no proprietary or industry-restricted data, no unpublished results
+you are not ready to share, nothing under NDA or export control.
+
+A published abstract of your own is the safe choice. If nothing you have with
+you clears that bar, describe a course you teach in three sentences instead —
+that works just as well for this exercise. Teaching this rule to your students
+is part of teaching them to use these tools.
 
 Fill in the bracket, then copy everything between the lines, paste it at
 the agent prompt (the first terminal), and press Enter.

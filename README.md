@@ -50,6 +50,11 @@ about 93 characters. Then:
 0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
    accept, then check that <https://github.com> loads.
 
+   **If you created your Codespace before September 9**, delete it at
+   <https://github.com/codespaces> and create a fresh one. An early one still
+   has an old setup script inside it and will make you run `bash setup.sh`
+   twice. Deleting costs nothing — you have not put any work in it yet.
+
 1. Open your Codespace: green **Code** button → **Codespaces** tab (the
    right-hand tab, not **Local**) → **Create codespace on main**. If you are
    asked whether you trust the authors of the files in this folder, say yes.
@@ -107,9 +112,12 @@ Then you point the same agent at your own paper or course, and you write
 one change to one assignment you teach. The files are in
 [`exercises/`](exercises/).
 
-The takeaway is not "AI is good" or "AI is bad." It's that output quality is
-a function of how well you direct and supervise the agent — a habit you can
-teach, and a habit your students need.
+The takeaway is not "AI is good" or "AI is bad." It's that **a fluent answer is
+not the same as a trustworthy one.** Trustworthy work from an agent takes three
+habits — specifying what you want, supervising while it runs, and verifying the
+result against something outside the agent. The third is the one people skip,
+and it is the one pass 3 exists to make unskippable. All three are teachable,
+and all three are habits your students need.
 
 ---
 
@@ -125,8 +133,11 @@ your own Codespace at setup and disappear with it. Please don't redistribute
 them. Papers remain © the American Society for Engineering Education and
 their respective authors.
 
-Your Codespace is yours alone — no one else can see it — and you can delete
-it at <https://github.com/codespaces> when the session ends.
+Your Codespace is yours alone — no one else can see it. **Please delete it at
+<https://github.com/codespaces> when you are finished with it.** ASEE's
+permission covers this session, so retiring the environment afterwards is part
+of the agreement we made to be able to use the papers at all. Save anything you
+want to keep first — your report, your brief, your notes.
 
 ---
 

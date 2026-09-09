@@ -26,6 +26,9 @@ die() {
 }
 
 hr; echo " From Chatbots to Agents — setup"; hr
+# Print the revision. With 24 screens in a room, "which version is that one on?"
+# has to be answerable from across the room without asking anyone to type.
+echo "Workshop files: $(git -C "$ROOT" rev-parse --short HEAD 2>/dev/null || echo unknown)"
 
 # ---------------------------------------------------- 0. latest exercises
 # A Codespace created before the conference has whatever was pushed then.
@@ -34,12 +37,19 @@ BEFORE_PULL="$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo none)"
 if git -C "$ROOT" pull --ff-only --quiet 2>/dev/null; then
   AFTER_PULL="$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo none)"
   if [ "$BEFORE_PULL" != "$AFTER_PULL" ]; then
-    # The pull just replaced this file on disk, but bash is still executing the
-    # OLD one from its open file handle. A Codespace created between
-    # 2026-09-08 and the fix has exactly that problem: it would run the old
-    # logic, fail, and only self-heal on a second run. Restart once, into the
-    # version we just fetched. WORKSHOP_SETUP_REEXEC makes this happen at most
-    # once, so a repo that legitimately updates every run cannot loop.
+    # The pull just replaced this file on disk, but bash is still executing
+    # the OLD one from its open file handle, so without this the rest of the
+    # run uses stale logic. Restart once, into the version we just fetched.
+    #
+    # Note what this does NOT fix: a Codespace created before 2026-09-09 has a
+    # setup.sh that predates this block, so its first run cannot re-exec. That
+    # case was measured — run 1 pulls the fix and fails at the old OpenClaw
+    # check, run 2 self-heals completely — and the old script's own error text
+    # already says "re-run: bash setup.sh". Cleanest recovery is still to
+    # delete that Codespace and create a fresh one.
+    #
+    # WORKSHOP_SETUP_REEXEC bounds this to one restart, so a repo that
+    # legitimately updates on every run cannot loop.
     if [ -z "${WORKSHOP_SETUP_REEXEC:-}" ]; then
       export WORKSHOP_SETUP_REEXEC=1
       echo "Exercise files updated — restarting with the current version."
