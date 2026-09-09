@@ -28,7 +28,11 @@ else
   echo "OpenClaw did not install here — setup.sh will install it."
 fi
 
-if pip install --user --quiet pandas matplotlib; then
+# Pinned like everything else in this container — these are the versions the
+# pass-2 charting step was verified against on 2026-09-09.
+PANDAS_VERSION="3.0.5"
+MATPLOTLIB_VERSION="3.11.1"
+if pip install --user --quiet "pandas==${PANDAS_VERSION}" "matplotlib==${MATPLOTLIB_VERSION}"; then
   echo "pandas + matplotlib installed."
 else
   echo "pandas/matplotlib did not install here — setup.sh will install them."

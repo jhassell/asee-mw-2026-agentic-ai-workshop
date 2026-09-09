@@ -8,8 +8,11 @@ set -uo pipefail
 
 CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
 MODEL="openrouter/google/gemini-3.7-flash"
-# Pinned, not @latest — see .devcontainer/postCreate.sh for why.
+# Pinned, not @latest — see .devcontainer/devcontainer.json for why. These
+# must stay in step with the versions postCreate.sh installs.
 OPENCLAW_VERSION="2026.9.2"
+PANDAS_VERSION="3.0.5"
+MATPLOTLIB_VERSION="3.11.1"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 hr() { echo "=============================================="; }
@@ -56,7 +59,8 @@ echo "✅ Agent installed — $(openclaw --version 2>/dev/null | head -1)"
 # The charting libraries the agent uses in pass 2. Quiet unless they are absent.
 python3 -c 'import pandas, matplotlib' 2>/dev/null || {
   echo "Installing charting libraries..."
-  pip install --user --quiet pandas matplotlib >/dev/null 2>&1 || true
+  pip install --user --quiet "pandas==${PANDAS_VERSION}" \
+      "matplotlib==${MATPLOTLIB_VERSION}" >/dev/null 2>&1 || true
 }
 
 # ------------------------------------------------- 1. code, or your own key

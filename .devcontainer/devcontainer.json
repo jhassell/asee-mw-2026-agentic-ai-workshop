@@ -1,10 +1,33 @@
 {
+  // EVERYTHING HERE IS PINNED ON PURPOSE. Read this before changing a version.
+  //
+  // On 2026-09-08 `npm install -g openclaw@latest` pulled openclaw 2026.9.3,
+  // published that morning, which raised its Node floor to >=24.16.0 and
+  // hard-fails its preinstall on the Node 22 below. A co-facilitator testing
+  // the participant path hit a dead end that no amount of waiting could clear,
+  // six days before the session. A floating version is a live dependency on
+  // someone else's release schedule, and this workshop runs once, on
+  // 2026-09-15, in a room with 24 people and 80 minutes.
+  //
+  // The stack below is the exact combination verified end-to-end in a fresh
+  // Codespace on 2026-09-09. Do not float any of it before the session.
+  // After the conference, moving to openclaw 2026.9.3+ means bumping the Node
+  // feature to 24 as well — they must move together.
   "name": "ASEE MW 2026 - From Chatbots to Agents",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+
+  // Pinned by digest: the :3.12 tag itself moves. This digest is the 3.12
+  // image as of 2026-09-09.
+  "image": "mcr.microsoft.com/devcontainers/python:3.12@sha256:7ae01dce85c08cc6b6ca411d7d7051eb100d2274ee2702120c11236692b6204f",
+
   "features": {
-    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
-    "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" }
+    // Feature pinned to an exact release, and Node pinned to an exact patch:
+    // "22" would drift within the 22.x line on any future rebuild.
+    "ghcr.io/devcontainers/features/node:1.7.1": { "version": "22.23.2" },
+    // sshd lets the facilitator test the participant path over
+    // `gh codespace ssh`. Participants never touch it.
+    "ghcr.io/devcontainers/features/sshd:1.1.0": { "version": "1.1.0" }
   },
+
   "postCreateCommand": "bash .devcontainer/postCreate.sh",
   "forwardPorts": [18789, 8000],
   "portsAttributes": {
