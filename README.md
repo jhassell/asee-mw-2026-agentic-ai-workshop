@@ -44,8 +44,9 @@ Safari) and that you can type on comfortably for 90 minutes.
 
 ## At the workshop
 
-You'll receive a **seat card** with a workshop code on it — a long string of
-about 93 characters. Then:
+You'll receive a **seat card**. It has a **4-character code** on the front, and
+a long code on the back that does the same job if the short one gives trouble.
+Then:
 
 0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
    accept, then check that <https://github.com> loads.
@@ -68,19 +69,21 @@ about 93 characters. Then:
    bash setup.sh
    ```
 
-3. When it asks for the workshop code, enter the code from your seat card and
-   press Enter. Three things are worth knowing before you do:
+3. When it asks for the workshop code, type the **4 characters** from the front
+   of your seat card and press Enter. Two things are worth knowing:
 
-   - **Nothing appears on the screen as you type or paste it.** No dots, no
-     asterisks, no movement at all. That is deliberate — the code is hidden so
-     it can't be read off your screen. It *is* going in.
-   - If you paste, Chrome may ask **"Allow this site to see text and images
-     copied to the clipboard?"** — click **Allow**. The terminal may then show
-     its own warning about pasting multiple characters; choose the option that
-     pastes anyway.
-   - Right after you press Enter, the script prints **"Received N
-     characters."** If N is around 93, the paste worked. If it's small, the
-     script offers you another try in place — you don't need to start over.
+   - **Nothing appears on the screen as you type.** No dots, no asterisks, no
+     movement at all — the code is hidden so it can't be read off your screen.
+     It *is* going in, and the script **echoes it back to you** as soon as you
+     press Enter so you can check it landed.
+   - Case doesn't matter, and neither does confusing `O` with `0` or `I` with
+     `1` — the code is checked with those treated as the same character.
+
+   If it isn't accepted, the script asks again on the spot; you don't start
+   over. If it still won't take, **turn the card over and paste the long code
+   instead** — that one works without needing the network to cooperate. If you
+   paste it, Chrome may ask to see your clipboard (click **Allow**) and the
+   terminal may show its own paste warning (paste anyway).
 
 4. Wait for **READY**. This takes a few seconds.
 
@@ -149,10 +152,11 @@ want to keep first — your report, your brief, your notes.
 | "Do you trust the authors of the files in this folder?" | Click **Yes, I trust the authors**. These are this repository's own files. |
 | Chrome asks to see your clipboard | Click **Allow** — that's how the paste reaches the terminal. |
 | The terminal warns you about pasting | Choose the option that pastes anyway. |
-| Nothing appears when you paste the code | Expected. The code is hidden on purpose. Press Enter; the script then tells you how many characters it received. |
+| Nothing appears when you type the code | Expected. The code is hidden on purpose. Press Enter and the script echoes it back to you. |
+| The 4-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and paste the long code; it needs no network service. |
+| "Could not reach the code service" | Use the long code on the back of the card. |
 | You closed the terminal | **Terminal → New Terminal**, or <kbd>Ctrl</kbd>+<kbd>`</kbd>. |
 | `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |
-| "That code was not accepted" | A character is missing or a space slipped in. The script asks again in place — just enter it once more. |
 | `openclaw: command not found` | Run `bash setup.sh`. It installs the agent itself if the container didn't. |
 | Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee-mw-2026-agentic-ai-workshop), then create a new one. Leave any other Codespaces alone. |
 | Anything else | Raise a hand. |

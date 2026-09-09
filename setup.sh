@@ -2,11 +2,17 @@
 # ASEE MW 2026 — "From Chatbots to Agents" workshop setup.
 # Run this once, with your seat card in hand:   bash setup.sh
 #
-# One paste. The workshop code on your card unlocks both the model access
-# and the paper corpus. Nothing sensitive is printed on the card itself.
+# Four characters. The code on the front of your seat card unlocks both the
+# model access and the paper corpus. If the short code gives trouble, the long
+# code on the back of the card does the same job without needing any service.
 set -uo pipefail
 
 CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
+# Trades the 4-character seat-card code for the read-only corpus token. If this
+# is unreachable for any reason, the long code on the back of the card still
+# works and needs no service at all — that fallback is deliberate, and it is why
+# both codes stay on the card. See facilitator/code-broker/ for the service.
+BROKER_URL="https://asee-mw-2026-workshop-code.hassell-ade.workers.dev"
 MODEL="openrouter/google/gemini-3.7-flash"
 # Pinned, not @latest — see .devcontainer/devcontainer.json for why. These
 # must stay in step with the versions postCreate.sh installs.
@@ -63,7 +69,7 @@ fi
 
 # ------------------------------------------------------------- 0.5 tooling
 # Everything that does not need your seat card happens first, so a container
-# problem surfaces before you type a 93-character code rather than after.
+# problem surfaces before the participant is asked for a code, not after.
 #
 # The container normally installs these at creation. If that failed — as it
 # did on 2026-09-08, when an upstream release bumped its Node requirement —
@@ -110,30 +116,66 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
 if [ "$OWN" -eq 0 ]; then
-  # Up to three tries in one run. A mistyped 93-character code should cost a
-  # re-paste, not a re-run of the whole script.
+  # Two ways to enter, both printed on the same card: the 4-character code on
+  # the front, or the long code on the back. Three tries in one run either way,
+  # so a mistype costs a re-entry rather than a re-run of the whole script.
   ATTEMPT=0
   while :; do
     ATTEMPT=$((ATTEMPT + 1))
-    CODE="${WORKSHOP_CODE:-}"
-    if [ -z "$CODE" ]; then
+    ENTRY="${WORKSHOP_CODE:-}"
+    if [ -z "$ENTRY" ]; then
       echo
-      echo "Paste the workshop code from your seat card, then press Enter."
-      echo "Nothing will appear on the screen while you paste. That is normal —"
-      echo "the code is hidden on purpose. Paste once, then press Enter."
+      echo "Type the 4-character code from your seat card, then press Enter."
+      echo "(Nothing shows as you type. The short code is echoed back once you"
+      echo " press Enter, so you can check it landed. The long code on the back"
+      echo " of the card also works — paste that instead if you have trouble.)"
       printf "> "
-      read -rs CODE </dev/tty
+      read -rs ENTRY </dev/tty
       echo
     fi
-    CODE="$(printf '%s' "$CODE" | tr -d '[:space:]')"
-    if [ "${#CODE}" -eq 1 ]; then echo "Received 1 character."; else echo "Received ${#CODE} characters."; fi
-    if [ "${#CODE}" -lt 20 ]; then
+    ENTRY="$(printf '%s' "$ENTRY" | tr -d '[:space:]')"
+
+    if [ "${#ENTRY}" -eq 0 ]; then
       if [ "$ATTEMPT" -ge 3 ] || [ -n "${WORKSHOP_CODE:-}" ]; then
         die "No code was received." \
-            "Try selecting the code on your card and typing it in full, or raise a hand."
+            "Type the 4-character code from your seat card, or raise a hand."
       fi
-      echo "   That looks too short — the code is about 93 characters. Let's try again."
+      echo "   Nothing came through. Let's try again."
       continue
+    fi
+
+    if [ "${#ENTRY}" -le 8 ]; then
+      # Short code. Echo it back: it is a low-value, rate-limited, single-day
+      # code, and seeing it is precisely what removes the "did my typing even
+      # land?" confusion that the long code caused. Then trade it for the real
+      # read-only token.
+      SHOWN="$(printf '%s' "$ENTRY" | tr '[:lower:]' '[:upper:]')"
+      echo "You entered: ${SHOWN}"
+      echo "Checking your code..."
+      BSTATUS="$(curl -s -m 20 -o "$TMP/broker.json" -w '%{http_code}' \
+        -X POST -H 'content-type: application/json' \
+        -d "$(printf '{"code":"%s"}' "$SHOWN")" "$BROKER_URL" || echo 000)"
+      if [ "$BSTATUS" = "200" ]; then
+        CODE="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1])).get("token",""))' "$TMP/broker.json" 2>/dev/null)"
+        [ -n "$CODE" ] || die "The code service replied but sent nothing back." \
+              "Use the long code on the back of your card, or raise a hand."
+      elif [ "$BSTATUS" = "000" ]; then
+        die "Could not reach the code service (network)." \
+            "Use the long code on the back of your card — it does not need this service."
+      else
+        DETAIL="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1])).get("detail",""))' "$TMP/broker.json" 2>/dev/null)"
+        if [ "$ATTEMPT" -ge 3 ] || [ -n "${WORKSHOP_CODE:-}" ]; then
+          die "That code was not accepted. ${DETAIL}" \
+              "Use the long code on the back of your card, or raise a hand."
+        fi
+        echo "   Not recognised${DETAIL:+ — $DETAIL}. Check the card and try again."
+        continue
+      fi
+    else
+      # Long code: the read-only corpus token itself, off the back of the card.
+      # This path needs no external service, which is why it is the fallback.
+      echo "Received ${#ENTRY} characters (long code)."
+      CODE="$ENTRY"
     fi
 
     # --------------------------------------------------- 2. fetch the bundle
@@ -148,7 +190,7 @@ if [ "$OWN" -eq 0 ]; then
       die "That workshop code was rejected three times." \
           "Raise a hand — a facilitator will check the code on your card."
     fi
-    echo "   That code was not accepted — a character is probably missing."
+    echo "   That code did not unlock the materials."
     echo "   Let's try once more."
   done
   echo "✅ Code accepted."
