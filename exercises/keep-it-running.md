@@ -13,6 +13,15 @@ fetched goes with it. Your Codespace keeps working until you delete it or
 GitHub retires it after 30 days of inactivity, but a fresh one will not have
 a key. Here is how to have your own, for about the cost of a lunch.
 
+**First, before you leave: delete today's Codespace.** It holds ASEE-licensed
+papers and the workshop credential, and retiring it is a condition of the
+permission that let us use the papers at all. Only you can do it — it is in
+your account. Save your report and brief first, then go to
+<https://github.com/codespaces> and delete the one named after
+**asee-mw-2026-agentic-ai-workshop**. Nothing below depends on it surviving.
+
+---
+
 1. **Fork the repo.** On
    <https://github.com/jhassell/asee-mw-2026-agentic-ai-workshop> click
    **Fork**. You now own a copy.

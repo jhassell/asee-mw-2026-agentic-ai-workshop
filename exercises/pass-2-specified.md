@@ -4,8 +4,10 @@ Same task. Now with the three things the room just asked for: what exactly
 to look at, what shape the answer takes, and how we will know it is right.
 
 **Write criterion 5 before you paste.** It is the one line in this file that
-is yours. Take it from what the room said it would need in order to trust
-the answer. Copy it onto your exit card too.
+is yours — and you already wrote it. It is the thing you said in pass 1 that
+the result would have to show you so you could check it yourself. Phrase it as
+something the agent can visibly satisfy or visibly fail. Copy it onto your exit
+card too.
 
 Copy everything between the lines, fill in criterion 5, paste it at the
 agent prompt, and press Enter.

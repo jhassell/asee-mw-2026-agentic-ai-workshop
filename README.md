@@ -136,11 +136,21 @@ your own Codespace at setup and disappear with it. Please don't redistribute
 them. Papers remain © the American Society for Engineering Education and
 their respective authors.
 
-Your Codespace is yours alone — no one else can see it. **Please delete it at
-<https://github.com/codespaces> when you are finished with it.** ASEE's
-permission covers this session, so retiring the environment afterwards is part
-of the agreement we made to be able to use the papers at all. Save anything you
-want to keep first — your report, your brief, your notes.
+Your Codespace is yours alone — no one else can see it.
+
+**Before you leave, please delete it.** This is the one thing we ask of you.
+Your Codespace holds ASEE-licensed papers and a temporary workshop credential,
+and ASEE's permission is conditioned on those environments being retired after
+the session. Nobody but you can delete it — it lives in your account, not ours.
+
+1. Save anything you want to keep: your report, your brief, your notes.
+2. Go to <https://github.com/codespaces>.
+3. Delete the one named after **asee-mw-2026-agentic-ai-workshop**, and check
+   that it is gone from the list.
+
+Everything you need to build the same environment again with your own key and
+your own documents is in `exercises/keep-it-running.md`, and none of it depends
+on this Codespace surviving.
 
 ---
 

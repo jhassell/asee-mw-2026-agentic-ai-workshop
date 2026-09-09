@@ -15,11 +15,17 @@ say it cannot read 79 papers. Whatever comes back, read it and ask yourself
 two questions:
 
 1. Could I check any sentence of this against the papers?
-2. If a colleague handed me this, what would I ask them before I believed
-   it?
+2. Imagine a colleague handed you this result. Before you would cite it or
+   act on it, **write one specific thing the result would have to show you
+   that you could go and check yourself.**
 
-Write your answer to question 2 on your card. You will use it in two
-minutes.
+Question 2 is the one that matters, and note what it is not asking. It is not
+asking what you would *say* to that colleague — "how did you do this?" is a
+conversation, not a criterion. It is asking what the result would have to
+*contain* for you to be able to verify it without taking anyone's word for it.
+
+Write that on your card. It becomes criterion 5 in the next pass, in your own
+words, and you will watch the agent meet it.
 
 If the answer looks good anyway, ask a third question: which requirements
 did it decide on its own, and would you trust it to decide them the same
