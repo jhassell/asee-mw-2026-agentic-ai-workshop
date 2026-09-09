@@ -30,7 +30,22 @@ hr; echo " From Chatbots to Agents — setup"; hr
 # ---------------------------------------------------- 0. latest exercises
 # A Codespace created before the conference has whatever was pushed then.
 # Best effort: pull the current files, never fail setup over it.
+BEFORE_PULL="$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo none)"
 if git -C "$ROOT" pull --ff-only --quiet 2>/dev/null; then
+  AFTER_PULL="$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo none)"
+  if [ "$BEFORE_PULL" != "$AFTER_PULL" ]; then
+    # The pull just replaced this file on disk, but bash is still executing the
+    # OLD one from its open file handle. A Codespace created between
+    # 2026-09-08 and the fix has exactly that problem: it would run the old
+    # logic, fail, and only self-heal on a second run. Restart once, into the
+    # version we just fetched. WORKSHOP_SETUP_REEXEC makes this happen at most
+    # once, so a repo that legitimately updates every run cannot loop.
+    if [ -z "${WORKSHOP_SETUP_REEXEC:-}" ]; then
+      export WORKSHOP_SETUP_REEXEC=1
+      echo "Exercise files updated — restarting with the current version."
+      exec bash "$ROOT/setup.sh" "$@"
+    fi
+  fi
   echo "Exercise files are up to date."
 else
   echo "Could not refresh exercise files (offline or local edits); continuing."
@@ -60,7 +75,14 @@ echo "✅ Agent installed — $(openclaw --version 2>/dev/null | head -1)"
 python3 -c 'import pandas, matplotlib' 2>/dev/null || {
   echo "Installing charting libraries..."
   pip install --user --quiet "pandas==${PANDAS_VERSION}" \
-      "matplotlib==${MATPLOTLIB_VERSION}" >/dev/null 2>&1 || true
+      "matplotlib==${MATPLOTLIB_VERSION}" >/tmp/charting-install.log 2>&1 || true
+  # Say so if it did not work. Otherwise the first symptom is pass 2 failing
+  # to draw its chart with the clock running.
+  python3 -c 'import pandas, matplotlib' 2>/dev/null || {
+    echo "⚠️  The charting libraries did not install. Everything else will work;"
+    echo "   the agent may not be able to draw the chart in pass 2. Mention this"
+    echo "   to a facilitator when you get there — it is not urgent now."
+  }
 }
 
 # ------------------------------------------------- 1. code, or your own key
