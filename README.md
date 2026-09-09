@@ -18,13 +18,21 @@ If you don't have one: <https://github.com/signup>. Any email works. You do
 not need a paid plan, and you will not be asked for a credit card.
 
 **2. Confirm you can open a Codespace.**
-Sign in to GitHub, come back to this page, and click:
+Sign in to GitHub, come back to this page, and click the green **Code** button
+at the top right of the file list. A small panel drops down with **two tabs**:
 
-> **Code** ▾ → **Codespaces** tab → **Create codespace on main**
+> **Local**  |  **Codespaces**   ← click the **Codespaces** tab, on the right
 
-A browser-based editor opens. That's it — you can close it again. Doing this
-once ahead of time means you walk into the room with a working environment
-instead of a signup form.
+The panel opens on **Local** by default, which offers to clone the repository
+to your laptop. That is *not* what you want. Click **Codespaces**, then
+**Create codespace on main**.
+
+A browser-based editor opens and spends a minute or two building. Along the
+way it may ask **"Do you trust the authors of the files in this folder?"** —
+click **Yes, I trust the authors** (it is this repository's own files).
+
+That's it — you can close the tab again. Doing this once ahead of time means
+you walk into the room with a working environment instead of a signup form.
 
 You do **not** need to install anything on your laptop. You do **not** need
 an API key of your own — one is provided at the session.
@@ -36,19 +44,41 @@ Safari) and that you can type on comfortably for 90 minutes.
 
 ## At the workshop
 
-You'll receive a **seat card** with a workshop code on it. Then:
+You'll receive a **seat card** with a workshop code on it — a long string of
+about 93 characters. Then:
 
 0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
    accept, then check that <https://github.com> loads.
-1. Open your Codespace (**Code** → **Codespaces** → **Create codespace on main**).
-2. In the terminal at the bottom of the window, run:
+
+1. Open your Codespace: green **Code** button → **Codespaces** tab (the
+   right-hand tab, not **Local**) → **Create codespace on main**. If you are
+   asked whether you trust the authors of the files in this folder, say yes.
+
+2. A terminal is already open across the bottom of the window. If you don't
+   see one, or you close it by accident: **Terminal → New Terminal** from the
+   menu, or press <kbd>Ctrl</kbd>+<kbd>`</kbd> (the backtick key, top left of
+   the keyboard). In it, run:
 
    ```bash
    bash setup.sh
    ```
 
-3. Paste the code from your seat card when prompted, and press Enter.
+3. When it asks for the workshop code, enter the code from your seat card and
+   press Enter. Three things are worth knowing before you do:
+
+   - **Nothing appears on the screen as you type or paste it.** No dots, no
+     asterisks, no movement at all. That is deliberate — the code is hidden so
+     it can't be read off your screen. It *is* going in.
+   - If you paste, Chrome may ask **"Allow this site to see text and images
+     copied to the clipboard?"** — click **Allow**. The terminal may then show
+     its own warning about pasting multiple characters; choose the option that
+     pastes anyway.
+   - Right after you press Enter, the script prints **"Received N
+     characters."** If N is around 93, the paste worked. If it's small, the
+     script offers you another try in place — you don't need to start over.
+
 4. Wait for **READY**. This takes a few seconds.
+
 5. Start the agent:
 
    ```bash
@@ -104,9 +134,15 @@ it at <https://github.com/codespaces> when the session ends.
 
 | What you see | What to do |
 |---|---|
+| The **Code** button only offers to clone or download | You're on the **Local** tab. Click the **Codespaces** tab beside it. |
+| "Do you trust the authors of the files in this folder?" | Click **Yes, I trust the authors**. These are this repository's own files. |
+| Chrome asks to see your clipboard | Click **Allow** — that's how the paste reaches the terminal. |
+| The terminal warns you about pasting | Choose the option that pastes anyway. |
+| Nothing appears when you paste the code | Expected. The code is hidden on purpose. Press Enter; the script then tells you how many characters it received. |
+| You closed the terminal | **Terminal → New Terminal**, or <kbd>Ctrl</kbd>+<kbd>`</kbd>. |
 | `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |
-| "That workshop code was rejected" | A character is missing or a space slipped in. Re-run `bash setup.sh` and paste again. |
-| `openclaw: command not found` | The container is still finishing. Wait 30 seconds, then re-run `bash setup.sh`. |
+| "That code was not accepted" | A character is missing or a space slipped in. The script asks again in place — just enter it once more. |
+| `openclaw: command not found` | Run `bash setup.sh`. It installs the agent itself if the container didn't. |
 | Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee-mw-2026-agentic-ai-workshop), then create a new one. Leave any other Codespaces alone. |
 | Anything else | Raise a hand. |
 

@@ -8,6 +8,8 @@ set -uo pipefail
 
 CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
 MODEL="openrouter/google/gemini-3.7-flash"
+# Pinned, not @latest — see .devcontainer/postCreate.sh for why.
+OPENCLAW_VERSION="2026.9.2"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 hr() { echo "=============================================="; }
@@ -31,6 +33,32 @@ else
   echo "Could not refresh exercise files (offline or local edits); continuing."
 fi
 
+# ------------------------------------------------------------- 0.5 tooling
+# Everything that does not need your seat card happens first, so a container
+# problem surfaces before you type a 93-character code rather than after.
+#
+# The container normally installs these at creation. If that failed — as it
+# did on 2026-09-08, when an upstream release bumped its Node requirement —
+# repair it here rather than telling you to wait and try again.
+if ! command -v openclaw >/dev/null 2>&1; then
+  echo "Installing the agent (about a minute; this only happens once)..."
+  for attempt in 1 2 3; do
+    npm install -g "openclaw@${OPENCLAW_VERSION}" >/tmp/openclaw-install.log 2>&1 && break
+    echo "   attempt ${attempt} did not succeed; retrying..."
+    sleep 5
+  done
+  hash -r
+fi
+command -v openclaw >/dev/null 2>&1 || die "The agent could not be installed." \
+  "Show a facilitator the last few lines of /tmp/openclaw-install.log"
+echo "✅ Agent installed — $(openclaw --version 2>/dev/null | head -1)"
+
+# The charting libraries the agent uses in pass 2. Quiet unless they are absent.
+python3 -c 'import pandas, matplotlib' 2>/dev/null || {
+  echo "Installing charting libraries..."
+  pip install --user --quiet pandas matplotlib >/dev/null 2>&1 || true
+}
+
 # ------------------------------------------------- 1. code, or your own key
 # Two ways in. At the workshop: the seat-card code, which unlocks the papers
 # and the model key. Afterwards: a file named my-openrouter.key in this
@@ -46,24 +74,47 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
 if [ "$OWN" -eq 0 ]; then
-  CODE="${WORKSHOP_CODE:-}"
-  if [ -z "$CODE" ]; then
-    printf "Paste the workshop code from your seat card, then press Enter.\n(The screen will not show it as you paste.)\n> "
-    read -rs CODE </dev/tty
-    echo
-  fi
-  CODE="$(printf '%s' "$CODE" | tr -d '[:space:]')"
-  [ -n "$CODE" ] || die "No code entered." \
-    "Re-run: bash setup.sh   — then paste the code from your seat card."
+  # Up to three tries in one run. A mistyped 93-character code should cost a
+  # re-paste, not a re-run of the whole script.
+  ATTEMPT=0
+  while :; do
+    ATTEMPT=$((ATTEMPT + 1))
+    CODE="${WORKSHOP_CODE:-}"
+    if [ -z "$CODE" ]; then
+      echo
+      echo "Paste the workshop code from your seat card, then press Enter."
+      echo "Nothing will appear on the screen while you paste. That is normal —"
+      echo "the code is hidden on purpose. Paste once, then press Enter."
+      printf "> "
+      read -rs CODE </dev/tty
+      echo
+    fi
+    CODE="$(printf '%s' "$CODE" | tr -d '[:space:]')"
+    if [ "${#CODE}" -eq 1 ]; then echo "Received 1 character."; else echo "Received ${#CODE} characters."; fi
+    if [ "${#CODE}" -lt 20 ]; then
+      if [ "$ATTEMPT" -ge 3 ] || [ -n "${WORKSHOP_CODE:-}" ]; then
+        die "No code was received." \
+            "Try selecting the code on your card and typing it in full, or raise a hand."
+      fi
+      echo "   That looks too short — the code is about 93 characters. Let's try again."
+      continue
+    fi
 
-  # ----------------------------------------------------- 2. fetch the bundle
-  echo "Unlocking workshop materials..."
-  if ! git clone --depth 1 --quiet \
-        "https://x-access-token:${CODE}@github.com/${CORPUS_REPO}.git" \
-        "$TMP/bundle" 2>"$TMP/err"; then
-    die "That workshop code was rejected." \
-        "Check for a missing character or a stray space, then re-run: bash setup.sh"
-  fi
+    # --------------------------------------------------- 2. fetch the bundle
+    echo "Unlocking workshop materials..."
+    if git clone --depth 1 --quiet \
+          "https://x-access-token:${CODE}@github.com/${CORPUS_REPO}.git" \
+          "$TMP/bundle" 2>"$TMP/err"; then
+      break
+    fi
+    rm -rf "$TMP/bundle"
+    if [ "$ATTEMPT" -ge 3 ] || [ -n "${WORKSHOP_CODE:-}" ]; then
+      die "That workshop code was rejected three times." \
+          "Raise a hand — a facilitator will check the code on your card."
+    fi
+    echo "   That code was not accepted — a character is probably missing."
+    echo "   Let's try once more."
+  done
   echo "✅ Code accepted."
 
   # ------------------------------------------------------------- 3. the corpus
@@ -113,12 +164,9 @@ case "$HTTP" in
 esac
 
 # --------------------------------------------------------- 5. configure agent
-command -v openclaw >/dev/null 2>&1 || die "OpenClaw is not installed yet." \
-  "The container may still be finishing. Wait 30 seconds, then re-run: bash setup.sh"
-
 echo "Configuring OpenClaw..."
 export WORKSHOP_ROOT="$ROOT"
-# Write the config directly (OpenClaw 2026.9+ schema): the key under env.vars,
+# Write the config directly (OpenClaw 2026.9 schema): the key under env.vars,
 # the model pinned as primary and allow-listed, memory search off (it would
 # otherwise try to reach an OpenAI embeddings endpoint and log errors on every
 # turn). Then let doctor normalize anything version-specific.
