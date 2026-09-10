@@ -79,15 +79,33 @@ more literal sense of that word, the sense a lawyer would recognise.
 
 That is an enormous amount of power to delegate, and the engineering that
 decides *how much*, *within what boundary*, *with what approval*, and *with
-what record* is real engineering. It has requirements, failure modes, and
-safety cases. It now has a name — **harness engineering** — and as of 2026 it
-has a Wikipedia entry and documentation from Microsoft, Databricks and others.
-Eighteen months ago it had none of those things.
+what record* is real engineering. It has requirements, failure modes, and safety
+cases.
 
-**Here is the claim this workshop is willing to defend:** harness engineering
-looks like a discipline arriving in real time, and you are about to spend an
-hour inside one of the first widely used harnesses. Not a mature tool with
-thirty years of accumulated practice. An early one.
+### You can watch this discipline being named
+
+This should interest an engineer, because the naming happened close enough to
+now that the seams are still visible.
+
+The nouns *agent harness* and *LLM harness* circulated among practitioners
+before anybody named the practice. The phrase **harness engineering** appears in
+early 2026, and **who coined it is genuinely contested** — some accounts trace
+it to a February 2026 post by Mitchell Hashimoto, describing the practice of
+engineering a permanent fix into an agent's environment every time it makes a
+mistake; others credit Vivek Trivedy at LangChain, whose "Anatomy of an Agent
+Harness" derived the components from the `Agent = Model + Harness` formula.
+
+By mid-2026 it had become an object of academic study — including work on
+agents that mine their own failures to propose improvements to their own
+harness — and it now has reference-work and vendor documentation (Microsoft,
+Databricks, LangChain, O'Reilly) where eighteen months ago it had none.
+
+**So the claim is not that this is a discipline nobody has noticed.** It is that
+a discipline acquired its name, its literature, and its first attempts at a
+textbook inside about nine months — and that you are about to spend an hour
+inside one of the first widely used harnesses. Not a mature tool with thirty
+years of accumulated practice. An early one, in a field whose vocabulary settled
+after most of us last updated a syllabus.
 
 ### Why this is the intellectual centre of the workshop, not background
 
@@ -177,8 +195,10 @@ come from the public package registry and are checkable.
 | **May 2025** | Claude Code generally available |
 | **Jun 2025** | Google Gemini CLI |
 | **Jan 2026** | **OpenClaw's first public release** |
-| **through 2026** | The vocabulary settles. "Harness" stops being slang and starts appearing in vendor documentation and reference works |
-| **Jun 2026** | Gemini CLI retired and replaced — a reminder that none of this is stable yet |
+| **Feb 2026** | The phrase "harness engineering" starts appearing. Attribution is contested to this day |
+| **19 May 2026** | Google announces it is retiring Gemini CLI |
+| **18 Jun 2026** | Gemini CLI stops serving individual accounts; Antigravity CLI replaces it — none of this is stable yet |
+| **mid-2026** | Harnesses become an object of academic study, including agents that improve their own harness |
 | **Sep 2026** | An OpenClaw release breaks this workshop's container. You are reading a pinned version because of it |
 
 Eighteen months, start to finish. Most of the engineering practice around these
