@@ -6,9 +6,10 @@ is yours to discover and yours to write down.
 The rule for this pass: **do not ask the agent whether the agent was
 right.** Check the world instead.
 
-First, get a terminal that is not the agent. In the menu bar choose
-**Terminal > New Terminal**. A second panel opens with a `$` prompt. Type
-here, not at the agent.
+First, get a terminal that is not the agent. Click the **+** at the top
+right of the terminal panel (or open the **☰** menu at the top left, then
+**Terminal → New Terminal** — there is no menu bar in the browser). A second
+terminal opens whose last line ends in `$`. Type here, not at the agent.
 
 ![Terminal, New Terminal: the agent prompt is a chevron, the plain terminal is a dollar sign](../docs/figures/05-second-terminal.svg)
 
@@ -78,7 +79,7 @@ the removed files has to be re-derived or withdrawn.
 ## If this went wrong
 
 - Move 1 printed nothing: you typed at the agent prompt. Open a new
-  terminal (Terminal > New Terminal) and try again.
+  terminal (the **+** at the top right of the terminal panel) and try again.
 - You do not know which paper your report ranked first: open
   `coverage-report.md` and read section 4.
 - peer.asee.org is slow on the conference wifi: try

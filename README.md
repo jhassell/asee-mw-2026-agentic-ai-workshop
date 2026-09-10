@@ -29,11 +29,14 @@ to your laptop. That is *not* what you want. Click **Codespaces**, then
 
 ![Opening a Codespace: click the Codespaces tab, not Local](docs/figures/01-code-menu.svg)
 
-A browser-based editor opens and spends a minute or two building. Along the
-way it may ask **"Do you trust the authors of the files in this folder?"** —
-click **Yes, I trust the authors** (it is this repository's own files).
+A browser-based editor opens and spends a minute or two building. When the
+terminal starts, a box asks **"Do you trust the authors of the files in this
+folder?"** Click the green **Trust Folder & Continue** button — these are the
+workshop's own files. (Until you do, a banner across the top says *"Restricted Mode is intended
+for safe code browsing"* and the terminal will not start. That banner is
+expected; clicking Trust Folder & Continue makes it go away.)
 
-![The trust prompt: click Yes, I trust the authors](docs/figures/02-trust-prompt.svg)
+![The real trust dialog: click the green Trust Folder and Continue button](docs/screenshots/A-trust-folder-and-continue.png)
 
 That's it — you can close the tab again. Doing this once ahead of time means
 you walk into the room with a working environment instead of a signup form.
@@ -95,7 +98,11 @@ Then:
      `B` or `G` in any of them — and common misreads are forgiven anyway, so a
      `G` typed for a `6` still works.
 
-![Entering the code: nothing appears as you type, then it echoes back](docs/figures/04-entering-your-code.svg)
+![What you really see at the code prompt](docs/screenshots/D-code-prompt.png)
+
+   After you press Enter, the code is echoed back so you can check it landed:
+
+![The code echoed back after Enter](docs/screenshots/E-code-echoed-back.png)
 
    If it isn't accepted, the script asks again on the spot; you don't start
    over. If it still won't take, **turn the card over and paste the long code
@@ -197,7 +204,7 @@ on this Codespace surviving.
 | What you see | What to do |
 |---|---|
 | The **Code** button only offers to clone or download | You're on the **Local** tab. Click the **Codespaces** tab beside it. |
-| "Do you trust the authors of the files in this folder?" | Click **Yes, I trust the authors**. These are this repository's own files. |
+| "Do you trust the authors of the files in this folder?" | Click the green **Trust Folder & Continue**. These are the workshop's own files. |
 | Chrome asks to see your clipboard | Click **Allow** — that's how the paste reaches the terminal. |
 | The terminal warns you about pasting | Choose the option that pastes anyway. |
 | Nothing appears when you type the code | Expected. The code is hidden on purpose. Press Enter and the script echoes it back to you. |
