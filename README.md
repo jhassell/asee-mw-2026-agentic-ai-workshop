@@ -27,9 +27,13 @@ The panel opens on **Local** by default, which offers to clone the repository
 to your laptop. That is *not* what you want. Click **Codespaces**, then
 **Create codespace on main**.
 
+![Opening a Codespace: click the Codespaces tab, not Local](docs/figures/01-code-menu.svg)
+
 A browser-based editor opens and spends a minute or two building. Along the
 way it may ask **"Do you trust the authors of the files in this folder?"** —
 click **Yes, I trust the authors** (it is this repository's own files).
+
+![The trust prompt: click Yes, I trust the authors](docs/figures/02-trust-prompt.svg)
 
 That's it — you can close the tab again. Doing this once ahead of time means
 you walk into the room with a working environment instead of a signup form.
@@ -77,6 +81,8 @@ Then:
    bash setup.sh
    ```
 
+![The Codespace layout: explorer, editor, and the terminal where the agent lives](docs/figures/03-codespace-layout.svg)
+
 3. When it asks for the workshop code, type the **6 characters** from the front
    of your seat card and press Enter. Two things are worth knowing:
 
@@ -88,6 +94,8 @@ Then:
      looks like another one — there is no `O`, `0`, `1`, `I`, `L`, `S`, `Z`,
      `B` or `G` in any of them — and common misreads are forgiven anyway, so a
      `G` typed for a `6` still works.
+
+![Entering the code: nothing appears as you type, then it echoes back](docs/figures/04-entering-your-code.svg)
 
    If it isn't accepted, the script asks again on the spot; you don't start
    over. If it still won't take, **turn the card over and paste the long code
@@ -175,6 +183,8 @@ the session. Nobody but you can delete it — it lives in your account, not ours
 2. Go to <https://github.com/codespaces>.
 3. Delete the one named after **asee-mw-2026-agentic-ai-workshop**, and check
    that it is gone from the list.
+
+![Deleting your Codespace from github.com/codespaces](docs/figures/06-delete-codespace.svg)
 
 Everything you need to build the same environment again with your own key and
 your own documents is in `exercises/keep-it-running.md`, and none of it depends

@@ -10,6 +10,8 @@ First, get a terminal that is not the agent. In the menu bar choose
 **Terminal > New Terminal**. A second panel opens with a `$` prompt. Type
 here, not at the agent.
 
+![Terminal, New Terminal: the agent prompt is a chevron, the plain terminal is a dollar sign](../docs/figures/05-second-terminal.svg)
+
 ## Move 1: inside the sandbox
 
 Copy, paste, Enter:

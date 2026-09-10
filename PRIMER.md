@@ -166,6 +166,8 @@ whatever software the project specified in advance. You can stop and restart it,
 and inactive ones are deleted automatically after a retention period (30 days by
 default). **We will delete ours deliberately when we finish.**
 
+![The Codespace layout](docs/figures/03-codespace-layout.svg)
+
 Three reasons this workshop uses one:
 
 1. **You install nothing** on your laptop.
