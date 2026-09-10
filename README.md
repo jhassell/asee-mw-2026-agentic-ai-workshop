@@ -44,7 +44,7 @@ Safari) and that you can type on comfortably for 90 minutes.
 
 ## At the workshop
 
-You'll receive a **seat card**. It has a **4-character code** on the front, and
+You'll receive a **seat card**. It has a **6-character code** on the front, and
 a long code on the back that does the same job if the short one gives trouble.
 Then:
 
@@ -69,15 +69,17 @@ Then:
    bash setup.sh
    ```
 
-3. When it asks for the workshop code, type the **4 characters** from the front
+3. When it asks for the workshop code, type the **6 characters** from the front
    of your seat card and press Enter. Two things are worth knowing:
 
    - **Nothing appears on the screen as you type.** No dots, no asterisks, no
      movement at all — the code is hidden so it can't be read off your screen.
      It *is* going in, and the script **echoes it back to you** as soon as you
      press Enter so you can check it landed.
-   - Case doesn't matter, and neither does confusing `O` with `0` or `I` with
-     `1` — the code is checked with those treated as the same character.
+   - Case doesn't matter. The codes deliberately avoid every character that
+     looks like another one — there is no `O`, `0`, `1`, `I`, `L`, `S`, `Z`,
+     `B` or `G` in any of them — and common misreads are forgiven anyway, so a
+     `G` typed for a `6` still works.
 
    If it isn't accepted, the script asks again on the spot; you don't start
    over. If it still won't take, **turn the card over and paste the long code
@@ -167,7 +169,7 @@ on this Codespace surviving.
 | Chrome asks to see your clipboard | Click **Allow** — that's how the paste reaches the terminal. |
 | The terminal warns you about pasting | Choose the option that pastes anyway. |
 | Nothing appears when you type the code | Expected. The code is hidden on purpose. Press Enter and the script echoes it back to you. |
-| The 4-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and paste the long code; it needs no network service. |
+| The 6-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and paste the long code; it needs no network service. |
 | "Could not reach the code service" | Use the long code on the back of the card. |
 | You closed the terminal | **Terminal → New Terminal**, or <kbd>Ctrl</kbd>+<kbd>`</kbd>. |
 | `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |

@@ -8,7 +8,7 @@
 set -uo pipefail
 
 CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
-# Trades the 4-character seat-card code for the read-only corpus token. If this
+# Trades the 6-character seat-card code for the read-only corpus token. If this
 # is unreachable for any reason, the long code on the back of the card still
 # works and needs no service at all — that fallback is deliberate, and it is why
 # both codes stay on the card. See facilitator/code-broker/ for the service.
@@ -116,7 +116,7 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
 if [ "$OWN" -eq 0 ]; then
-  # Two ways to enter, both printed on the same card: the 4-character code on
+  # Two ways to enter, both printed on the same card: the 6-character code on
   # the front, or the long code on the back. Three tries in one run either way,
   # so a mistype costs a re-entry rather than a re-run of the whole script.
   ATTEMPT=0
@@ -125,7 +125,7 @@ if [ "$OWN" -eq 0 ]; then
     ENTRY="${WORKSHOP_CODE:-}"
     if [ -z "$ENTRY" ]; then
       echo
-      echo "Type the 4-character code from your seat card, then press Enter."
+      echo "Type the 6-character code from your seat card, then press Enter."
       echo "(Nothing shows as you type. The short code is echoed back once you"
       echo " press Enter, so you can check it landed. The long code on the back"
       echo " of the card also works — paste that instead if you have trouble.)"
@@ -138,7 +138,7 @@ if [ "$OWN" -eq 0 ]; then
     if [ "${#ENTRY}" -eq 0 ]; then
       if [ "$ATTEMPT" -ge 3 ] || [ -n "${WORKSHOP_CODE:-}" ]; then
         die "No code was received." \
-            "Type the 4-character code from your seat card, or raise a hand."
+            "Type the 6-character code from your seat card, or raise a hand."
       fi
       echo "   Nothing came through. Let's try again."
       continue
