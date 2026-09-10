@@ -36,32 +36,28 @@ browser tab, go to <https://peer.asee.org> and search for that title. Then
 search for the first author's name. Then do the same for the paper ranked
 second, so you have a comparison.
 
-Three different things, and only the first two are checks you can run here.
-This is the whole workshop in three words — **Source, Claim, Evidence**:
+## The whole workshop, in three words
 
-- **Source** — finding the paper on PEER shows it *exists*.
-- **Claim** — finding a quotation in the file shows the paper *says* it.
-- **Evidence** — neither of those shows the conclusion is *well supported*. Big
-  numbers in an abstract are a reason to read the methods, not a reason to
-  trust them.
+**Source** — does it exist? (the PEER search)
+**Claim** — does it say that? (the quotation, in the file)
+**Evidence** — is that enough to believe it? (neither check tells you)
 
-PEER is our independent authority today only because these are ASEE papers.
-**The habit is the part that travels, not the website.** Before you leave, answer
-this one for yourself and write it on your card:
+Big numbers in an abstract are a reason to read the methods, not a reason to
+trust them. And if a search finds nothing, write **"not verified," not
+"fake"** — a search can miss a real paper. What makes something fake is
+evidence, and you will hear some shortly.
 
-> In my field, what would I check against instead of PEER?
+PEER is today's authority only because these are ASEE papers. **The habit
+travels; the website does not.** So, on your card:
 
-Crossref or a DOI resolver, a patent database, a standards body, a clinical
-trial registry, the actual source code, the dataset, the statute, the vendor's
-own documentation. Whatever it is, it has to be something the agent did not
-hand you.
+> In my field, I would check against ________ instead.
 
-If a search finds nothing, write "not verified," not "fake." A search can
-miss a real paper. What makes a paper fake is evidence, and you will hear
-some in a moment.
+Crossref, a patent database, a standards body, a trial registry, the source
+code, the dataset, the statute, the vendor's own docs. Anything the agent did
+not hand you.
 
-Write on your exit card, lines 2 and 3: the claim you checked and what you
-found; and what your report now has to say instead.
+Also on the card, lines 2 and 3: the claim you checked and what you found, and
+what your report now has to say instead.
 
 ## When the facilitator says so: correct the folder
 

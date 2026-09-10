@@ -1,15 +1,23 @@
-# Your idea
+# Your idea — take this one home
 
-Point the same agent at your own work.
+**This is not part of the session.** We cut it from the room deliberately: the
+three passes are the workshop, and doing them properly matters more than doing
+more of them. This is the first thing to do afterwards, and it is the one that
+will actually change how you work, because it runs on material you care about.
 
-**First, pick the screen you will use.** If your own Codespace reached
-READY, use it now, and run the correction there too: in its plain
-terminal, `ls corpus/papers | wc -l` must show the corrected count before
-you go on. If yours never reached READY, stay with your partner and you
-type this one. Two people on one screen run the prompt twice, one after
-the other. The second person changes `my-positioning.md` to
-`my-positioning-2.md` in the prompt before pasting (it appears once), so
-the first brief is not overwritten. Each of you leaves with your own file.
+Do it tonight or this week, while your Codespace is still alive. It takes about
+ten minutes.
+
+**Before you start**, make sure the corpus is the corrected one: in the plain
+terminal, `ls corpus/papers | wc -l` should show the count the room agreed on
+after the reveal — not 79. If you never got that far, delete the two files the
+facilitator named first.
+
+Your Codespace stays alive until you delete it or GitHub retires it after 30
+days of inactivity. **But please do delete it once you have finished** — the
+papers in it are licensed to us for the session only. `keep-it-running.md`
+shows you how to rebuild the same environment with your own key and your own
+documents, which is the version you keep.
 
 **Before you paste — read this, it is the one rule in this file.** Your text
 goes to a third-party model over the internet, and it leaves your control when
@@ -50,8 +58,8 @@ quotations.
 
 ## When it finishes
 
-Open your brief (`my-positioning.md`, or `my-positioning-2.md` if you
-ran second). Then two checks, both required:
+Open your brief (`my-positioning.md`). Then two checks, both required — this
+is the part that makes it worth doing:
 
 1. Pick one of the five papers. Open it in `corpus/papers/` and find the
    quoted sentence. Is it there, and does it say what the brief claims?
@@ -60,15 +68,16 @@ ran second). Then two checks, both required:
 Check 2 would have failed for the file you removed. The habit is to run
 it anyway. A miss means "not verified," not "fake."
 
-If the facilitator says there is time for only one check, do check 1 now,
-write *provisional* on the first line of your brief, and do check 2 before
-you use the brief for anything.
+Do both. Nobody is waiting on you now, which is exactly why this version of
+the exercise teaches more than the in-room version would have.
 
-Take a photo of your card, or copy your brief somewhere you own, before
-the session ends.
+Then answer, for yourself, in one sentence: what did the corpus tell you that
+you did not know, and did the quotation hold up?
 
-Be ready to answer, in one sentence: what did the corpus tell you that you
-did not know, and did the quotation hold up?
+If it did not — if a quotation was not in the file, or a title returned
+nothing — that is the whole workshop happening to you on your own work, which
+is the point at which the habit sticks. John would genuinely like to hear about
+it: hassell@ou.edu.
 
 ## To take home
 

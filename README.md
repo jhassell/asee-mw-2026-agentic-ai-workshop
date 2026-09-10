@@ -111,9 +111,13 @@ papers, and watch the output change:
 3. **Verify.** If you don't check the agent's work against something
    outside the agent, you will confidently report things that aren't true.
 
-Then you point the same agent at your own paper or course, and you write
-one change to one assignment you teach. The files are in
-[`exercises/`](exercises/).
+Then you write one change to one assignment you teach, and the rubric line
+that grades it. The files are in [`exercises/`](exercises/).
+
+Three passes and one change — that is the whole session. It is short on
+purpose. Pointing the agent at your *own* paper or course is the first thing
+to do afterwards, and [`exercises/your-idea.md`](exercises/your-idea.md) walks
+you through it in about ten minutes.
 
 The takeaway is not "AI is good" or "AI is bad." It's that **a fluent answer is
 not the same as a trustworthy one.** Trustworthy work from an agent takes three
