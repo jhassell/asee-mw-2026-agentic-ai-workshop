@@ -44,6 +44,16 @@ that pass 3 reads the report pass 2 wrote. If you have no report, look at
 your neighbor's. Falling behind costs you nothing here — pass 3 is the one
 that matters, and it works on anyone's report.
 
+## If the words are new
+
+"Agent," "harness," "Codespace," "OpenClaw" — all about eighteen months old, so
+being new to them is the normal condition. [`../PRIMER.md`](../PRIMER.md) is a
+ten-minute plain-English explanation, and there is a printed short version on
+your chair. The one line worth having now: **Agent = Model + Harness.** The
+model decides what to do; the harness gives it hands, a place to act, and
+limits. A chatbot has no harness, which is why nothing happens between your
+turns.
+
 ## Two rules that save time
 
 - The agent prompt and the plain terminal are different things. The agent

@@ -37,6 +37,14 @@ you walk into the room with a working environment instead of a signup form.
 You do **not** need to install anything on your laptop. You do **not** need
 an API key of your own — one is provided at the session.
 
+**Optional, ten minutes, genuinely worth it:** [`PRIMER.md`](PRIMER.md) explains
+what you are actually going to be using — what an agent is (and why the experts
+still disagree), why it is not a chatbot, what a *harness* is and why that may
+be a new engineering discipline, what GitHub and Codespaces and OpenClaw are,
+and where all of this appears to be heading. None of this vocabulary is more
+than about eighteen months old, so nobody should feel behind. You can also read
+it afterwards — there is a printed short version on your chair.
+
 Bring a laptop that can run a modern browser (Chrome, Edge, Firefox, or
 Safari) and that you can type on comfortably for 90 minutes.
 
@@ -98,6 +106,20 @@ Then:
 The setup step downloads the workshop paper corpus and configures the agent
 for you. If anything fails, it will tell you exactly what to do next — and
 raising a hand is always a valid next step.
+
+---
+
+## What is this stuff?
+
+If "agent," "harness," "Codespace" or "OpenClaw" are new to you, that is the
+normal condition, not a gap — the words are about eighteen months old.
+[`PRIMER.md`](PRIMER.md) is a ten-minute read that explains all of them in
+plain terms, including the honest admission that there is no settled definition
+of "agent" even among the people building these things.
+
+The one-line version: **Agent = Model + Harness.** The model decides; the
+harness gives it hands, a place to act, and limits. A chatbot has no harness,
+which is why nothing happens between your turns.
 
 ---
 
