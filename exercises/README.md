@@ -31,7 +31,7 @@ is the one to do first.
 
 | File | What it is |
 |---|---|
-| [`your-idea.md`](your-idea.md) | **Do this one first, tonight or this week.** Point the same agent at your own abstract or course and get a positioning brief back — then check it. It is the session in miniature, on material you care about. |
+| [`your-idea.md`](your-idea.md) | **Do this one first — today, before you delete your Codespace.** Point the same agent at your own abstract or course, get a positioning brief back, then check it. It needs the paper corpus, which goes away with the Codespace. Ten minutes. |
 | [`keep-it-running.md`](keep-it-running.md) | How to keep this environment working after today, with your own key, for about ten dollars. |
 | [`starter-assignment.md`](starter-assignment.md) | A one-week assignment you can adapt: delegate, verify, document. |
 | [`rubric-template.md`](rubric-template.md) | The grading grid that goes with it. Five criteria, four levels. |

@@ -5,19 +5,25 @@ three passes are the workshop, and doing them properly matters more than doing
 more of them. This is the first thing to do afterwards, and it is the one that
 will actually change how you work, because it runs on material you care about.
 
-Do it tonight or this week, while your Codespace is still alive. It takes about
-ten minutes.
+**Do it before you delete your Codespace — today.** Over lunch, in a later
+session, on the flight home. It takes about ten minutes, and it needs the paper
+corpus, which goes away when the Codespace does. ASEE licensed those papers to
+us for the conference, so this is the window.
 
 **Before you start**, make sure the corpus is the corrected one: in the plain
 terminal, `ls corpus/papers | wc -l` should show the count the room agreed on
 after the reveal — not 79. If you never got that far, delete the two files the
 facilitator named first.
 
-Your Codespace stays alive until you delete it or GitHub retires it after 30
-days of inactivity. **But please do delete it once you have finished** — the
-papers in it are licensed to us for the session only. `keep-it-running.md`
-shows you how to rebuild the same environment with your own key and your own
-documents, which is the version you keep.
+**Then delete the Codespace** at <https://github.com/codespaces>. That is the
+one thing we ask of you, and it is the condition ASEE set for letting us use
+the papers at all.
+
+If you would rather do this later than today: fork the repo and follow
+`keep-it-running.md` first, then run this prompt against your *own* documents
+instead of the ASEE corpus. The prompt names no corpus and no paper count, so
+it works unchanged on any folder of Markdown or text files you have the right
+to use. You lose the 79 papers as a comparison set; you keep everything else.
 
 **Before you paste — read this, it is the one rule in this file.** Your text
 goes to a third-party model over the internet, and it leaves your control when
@@ -69,7 +75,8 @@ Check 2 would have failed for the file you removed. The habit is to run
 it anyway. A miss means "not verified," not "fake."
 
 Do both. Nobody is waiting on you now, which is exactly why this version of
-the exercise teaches more than the in-room version would have.
+the exercise teaches more than the in-room version would have — in the room,
+under the clock, the second check was the one that got skipped.
 
 Then answer, for yourself, in one sentence: what did the corpus tell you that
 you did not know, and did the quotation hold up?
