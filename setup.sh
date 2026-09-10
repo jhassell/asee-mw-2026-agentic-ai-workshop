@@ -128,7 +128,7 @@ if [ "$OWN" -eq 0 ]; then
       echo "Type the 6-character code from your seat card, then press Enter."
       echo "(Nothing shows as you type. The short code is echoed back once you"
       echo " press Enter, so you can check it landed. The long code on the back"
-      echo " of the card also works — paste that instead if you have trouble.)"
+      echo " of the card also works — type it in carefully at this same prompt.)"
       printf "> "
       read -rs ENTRY </dev/tty
       echo
