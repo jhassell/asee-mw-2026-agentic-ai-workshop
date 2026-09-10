@@ -56,12 +56,12 @@ Not just the model. The whole assembly:
 | **The loop** | The machinery that runs decide → act → observe, over and over, and decides when to stop. |
 | **Guardrails** | What it is not permitted to do, and what needs your approval first. |
 
-Everything in that table except the first row is **not the model**. Which
-brings us to the word that has finally settled this year.
+Everything in that table except the first row is **not the model**. Which brings
+us to the word the field has mostly agreed on over the last year.
 
 ## 3. The harness — and why this may be a new engineering discipline
 
-The field converged during 2026 on a formulation worth memorising:
+A formulation has become the common shorthand, and it is worth memorising:
 
 > ## Agent = Model + Harness
 
@@ -154,13 +154,18 @@ OpenClaw is a harness. It runs in the terminal, you start it with
 `openclaw chat`, and it connects a model to a set of tools and a working folder
 — your Codespace.
 
-It is **new**. Its package first appeared publicly on **29 January 2026**, and
-it has shipped **253 releases** in the seven months since. That is not a
-criticism; it is the tempo of the field. It is also not abstract for us: a
-release published on **8 September 2026** — the morning before this material was
-finalised — raised a requirement in a way that broke this workshop's setup
-outright, and had to be found and pinned. Your environment is deliberately
-frozen to one tested version for that reason.
+It is **new**, and here are the checkable facts rather than an impression. Its
+public repository dates from **24 November 2025**. The `openclaw` package
+appeared on the public package registry on **29 January 2026** and has shipped
+**253 releases** since. So: a public project about ten months old, releasing
+roughly once a day.
+
+That tempo is not a criticism, and it is not abstract for us either. A release
+published on **8 September 2026** — the day before this material was finalised —
+changed a requirement in a way that broke this workshop's setup outright. It had
+to be found, diagnosed and pinned. Your environment is deliberately frozen to one
+tested version because of it, and you will never see the failure. That is a
+harness-engineering decision too.
 
 You are, genuinely, using early equipment.
 
@@ -190,11 +195,12 @@ come from the public package registry and are checkable.
 
 | When | What |
 |---|---|
-| **Feb 2025** | Claude Code, research preview — the agentic loop in a terminal, at scale, for the first time in wide use |
+| **Feb 2025** | Claude Code, research preview — one of the tools that brought the agentic loop in a terminal into wide use |
 | **Apr 2025** | OpenAI Codex CLI |
 | **May 2025** | Claude Code generally available |
 | **Jun 2025** | Google Gemini CLI |
-| **Jan 2026** | **OpenClaw's first public release** |
+| **Nov 2025** | OpenClaw's public repository appears |
+| **Jan 2026** | **The `openclaw` package is published** — the version you are running descends from here |
 | **Feb 2026** | The phrase "harness engineering" starts appearing. Attribution is contested to this day |
 | **19 May 2026** | Google announces it is retiring Gemini CLI |
 | **18 Jun 2026** | Gemini CLI stops serving individual accounts; Antigravity CLI replaces it — none of this is stable yet |
