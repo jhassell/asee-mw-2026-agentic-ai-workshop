@@ -15,3 +15,10 @@ workshop-key.txt
 __pycache__/
 .DS_Store
 /tmp/
+
+# Takeaway (d) is NOT ready to ship. It carries a facilitator-only HTML comment
+# (visible to participants as raw markdown in the editor) and five unresolved
+# [I-1]..[I-5] items needing John's decisions. It was committed by accident on
+# 2026-09-09 via `git add exercises/` and removed the same evening. Ignored here
+# so that cannot happen again. Delete these three lines when the file is ready.
+exercises/what-went-wrong.md
