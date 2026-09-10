@@ -1,0 +1,11 @@
+{
+  // Workshop 9: there must be exactly ONE agent on screen, and it is OpenClaw in
+  // the terminal. Recent VS Code ships its own AI chat panel ("Build with
+  // Agent") on the right-hand side of every Codespace. In a live test on
+  // 2026-09-10 it sat beside the terminal inviting participants to type into
+  // the wrong agent. These two settings remove it; verified in a real Codespace
+  // the same day — after a reload the panel is gone and the terminal spans the
+  // full width.
+  "chat.disableAIFeatures": true,
+  "workbench.secondarySideBar.defaultVisibility": "hidden"
+}
