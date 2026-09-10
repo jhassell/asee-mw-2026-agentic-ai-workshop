@@ -35,7 +35,7 @@ is the one to do first.
 | [`keep-it-running.md`](keep-it-running.md) | How to keep this environment working after today, with your own key, for about ten dollars. |
 | [`starter-assignment.md`](starter-assignment.md) | A one-week assignment you can adapt: delegate, verify, document. |
 | [`rubric-template.md`](rubric-template.md) | The grading grid that goes with it. Five criteria, four levels. |
-| `what-went-wrong.md` | The candid list from our Summer 2026 course. |
+| `what-went-wrong.md` | The candid list from our Summer 2026 course — what broke, and what we would do again. **Added to this folder on the morning of the session.** If it is not here, ask; it means the last edit did not land. |
 
 ## If you fall behind
 
