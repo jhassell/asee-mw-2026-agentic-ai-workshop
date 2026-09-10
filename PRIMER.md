@@ -155,10 +155,16 @@ OpenClaw is a harness. It runs in the terminal, you start it with
 — your Codespace.
 
 It is **new**, and here are the checkable facts rather than an impression. Its
-public repository dates from **24 November 2025**. The `openclaw` package
-appeared on the public package registry on **29 January 2026** and has shipped
-**253 releases** since. So: a public project about ten months old, releasing
-roughly once a day.
+public repository dates from **24 November 2025**, with its first tagged
+releases the next day. The `openclaw` package appeared on the public package
+registry on **29 January 2026** and has shipped **253 releases** since. So: a
+public project about ten months old, releasing roughly once a day.
+
+Worth noticing, if you go and check: **the project is older than the name it
+now carries.** The repository predates the `openclaw` organisation it now lives
+in by about six weeks. Things in this field get built, renamed and re-homed
+faster than anyone writes them down, which is a large part of why a primer like
+this one is necessary at all.
 
 That tempo is not a criticism, and it is not abstract for us either. A release
 published on **8 September 2026** — the day before this material was finalised —
