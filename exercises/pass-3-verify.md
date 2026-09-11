@@ -37,7 +37,7 @@ count, and are both of these files in the same theme?
 Look at section 4 of your report, "Claims worth verifying." Take the paper
 ranked first, the one you would cite tomorrow. Copy its title. In a new
 browser tab, go to <https://peer.asee.org> and search for that title. Then
-search for the first author's name. If there is time before the facilitator
+search for the first author's name, which section 4 of your report lists. If there is time before the facilitator
 calls the room together, do the same for the paper ranked second.
 
 ## The whole workshop, in three words

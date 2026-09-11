@@ -11,10 +11,10 @@ this file is fine.
 Then select from `Read the YAML frontmatter` to the end of your criterion and
 copy it — not the lines of three backticks. Click once inside the terminal,
 paste, and press Enter. (Frontmatter is the labelled block at the top of each
-paper file: ID, title, key terms. The other technical words are for the agent.)
+paper file: ID, title, authors, key terms. The other technical words are for the agent.)
 
 ```
-Read the YAML frontmatter (paper_id, title, key_terms) of every file in
+Read the YAML frontmatter (paper_id, title, authors, key_terms) of every file in
 corpus/papers/. Do not read the full text of every paper; write a short
 Python script that reads the frontmatter instead. Group the papers into
 8 to 12 themes based on title and key_terms. Then write
@@ -33,7 +33,7 @@ coverage-report.md containing:
      three papers that make the strongest quantitative claims about
      student outcomes: a controlled or comparative design, a sample size,
      an effect size or a percentage change. For each: paper_id, title,
-     the design in five words, the key number. Rank them by how much you
+     first author, the design in five words, the key number. Rank them by how much you
      would want to verify before citing, first = most.
 Also save coverage.png, a horizontal bar chart of papers per theme, using
 matplotlib.
@@ -73,6 +73,8 @@ Was your criterion 5 met? Underline the words that did the work.
   described` and press Enter.
 - It says matplotlib is missing: paste `pip install matplotlib, then
   continue` and press Enter.
+- A file you had open disappeared when you clicked another one: click its
+  name again in the file list on the left.
 - It is still running at the ten-minute mark: raise a hand and look at your
   neighbor's report instead. Pass 3 works on any report.
 - You are back at a line ending in `$` and the agent is gone: type
