@@ -7,5 +7,9 @@
   // the same day — after a reload the panel is gone and the terminal spans the
   // full width.
   "chat.disableAIFeatures": true,
-  "workbench.secondarySideBar.defaultVisibility": "hidden"
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  // A second reviewer (2026-09-11) found that single-clicking a file replaced the
+  // one already open, because VS Code opens it in a temporary "preview" tab.
+  // Every file now opens in its own tab.
+  "workbench.editor.enablePreview": false
 }
