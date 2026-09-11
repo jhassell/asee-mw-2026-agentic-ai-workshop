@@ -3,12 +3,27 @@
 ### A ten-minute primer for Workshop 9, "From Chatbots to Agents"
 
 You do not need this to do the exercises. Read it if you want to know what the
-thing on your screen actually is.
+thing on your screen actually is. Some of the vocabulary is recent and still
+unsettled; **no prior familiarity is assumed**, and where the field is still
+arguing, this primer says so rather than picking a winner.
 
-You are an engineer. You are used to being handed equipment whose insides
-someone can explain. This is that explanation. Some of the vocabulary is recent
-and still unsettled; **no prior familiarity is assumed**, and where the field is
-still arguing, this primer says so rather than picking a winner and pretending.
+## The short version
+
+- There is no agreed definition of "agent." Ours for today: it chooses an
+  action, uses a tool, observes the result, and continues without waiting for
+  you.
+- You will recognise it when it **runs something, sees it fail, and tries
+  something else on its own.**
+- Working model: **Agent ≈ Model + Harness.** The harness is the engineered
+  runtime — tools, environment, evidence, state, loop, permissions.
+- The engineering problem is **deciding which keys it gets**: what authority,
+  what boundary, whose approval, what record.
+- **A harness bounds the evidence available to the agent.** Prompting cannot
+  manufacture a source the system cannot reach.
+- Therefore **verification requires an evidence path independent of the one that
+  produced the claim** — which is exercise three.
+
+The rest of this page explains each line.
 
 ---
 
@@ -16,10 +31,8 @@ still arguing, this primer says so rather than picking a winner and pretending.
 
 There is **no single accepted boundary** around the word. Vendors, researchers
 and practitioners draw it in different places, and the disagreement is real
-rather than a failure of anyone's homework.
-
-So rather than pretend otherwise, here is the **operational definition this
-workshop will use**:
+rather than a failure of anyone's homework. So here is the **operational
+definition this workshop will use**:
 
 > **An agent is a model that can choose an action, use a tool, observe the
 > result, and decide what to do next — without waiting for another instruction
@@ -38,19 +51,16 @@ An agent is given a goal instead of a question, and then runs a loop:
 
 > decide what to do next → do it → look at what happened → decide again
 
-**The clearest way to recognise one** is not where the text appears — it is this
-specific behaviour, which you will see today:
+**The clearest way to recognise one** is this specific behaviour, which you will
+see today:
 
 > *The system chooses a command, runs it, sees it fail, changes its approach,
 > and runs something else — without you telling it to.*
 
-That moment is unmistakable, and a chatbot cannot do it.
-
-A caution about easy tests, since this workshop is about not being fooled:
-"does it produce text, or files?" will not separate them. A chat interface can
-run code and write files behind the scenes; an agent can work for two minutes
-and hand you nothing but a paragraph. **Chat is an interface. Agency is a
-behaviour.** Judge the behaviour.
+A caution about easy tests: "does it produce text, or files?" will not separate
+them. A chat interface can run code behind the scenes; an agent can work for two
+minutes and hand you nothing but a paragraph. **Chat is an interface. Agency is
+a behaviour.** Judge the behaviour.
 
 ## 2. What is an agentic system?
 
@@ -79,78 +89,47 @@ call, the environment it acts in, the evidence it can reach, the state it keeps,
 the loop, the permissions and the oversight. A raw model does nothing at all. A
 harness is what makes it an agent.
 
-(The word gets used at two scales — broadly, "everything that is not the model,"
-and narrowly, inside some systems, for the component that executes one prepared
-turn. This primer means the broad sense.)
-
 ### The delegation problem
 
 Here, the harness gives the model **tool-mediated access to a computer**: within
 the permissions we grant, it can read files, write files and run commands, and
-what it changes stays changed.
+what it changes stays changed. That is a real transfer of authority. So:
 
-That is a real transfer of authority, and it is what makes a computer into
-something that acts on your behalf. So:
+> **The engineering problem is deciding which keys it gets** — what authority,
+> within what boundary, what needs human approval, and what record it leaves.
 
-> **The engineering problem is deciding which keys it gets.**
+That is requirements, threat modelling, containment and auditability: this
+audience's home ground.
 
-Which unpacks into questions this audience already knows how to ask:
+### A discipline being named right now
 
-- What **authority** does it have?
-- Within what **boundary**?
-- What requires **human approval**?
-- What **record** does it leave?
+**Mitchell Hashimoto used the phrase "harness engineering" on 5 February 2026**,
+for the habit of engineering a permanent fix into an agent's environment each
+time it makes a mistake. **LangChain published "Anatomy of an Agent Harness" on
+10 March 2026**, the source of the `Agent = Model + Harness` shorthand. By
+**June 2026** researchers were asking what makes a harness a harness. The honest
+description is **an emerging engineering practice**: not an established field,
+and not one nobody has noticed either.
 
-That is requirements, threat modelling, failure modes, containment and
-auditability. It is engineering — and it is the part with the least accumulated
-practice.
-
-### A discipline being named, in public, right now
-
-This should interest an engineer, because the seams are still visible.
-
-The nouns *agent harness* and *LLM harness* circulated among practitioners
-before anyone named the practice. **Mitchell Hashimoto used the phrase "harness
-engineering" on 5 February 2026**, describing the habit of engineering a
-permanent fix into an agent's environment each time it makes a mistake.
-**LangChain published "Anatomy of an Agent Harness" on 10 March 2026**, which is
-where the broad `Agent = Model + Harness` shorthand comes from — a different
-contribution, not a rival claim to the same one. By **June 2026** researchers
-were explicitly asking what makes a harness a harness.
-
-So the honest description is **an emerging engineering practice** — a candidate
-discipline that acquired a name, a literature and its first arguments inside
-about nine months. Not an established field. Not one nobody has noticed, either.
-
-You are about to spend an hour inside one of the first widely used harnesses.
-
-### Why this is the centre of the workshop, not background
-
-Here is the principle, stated carefully, because the sloppy version is wrong:
+### Why this is the centre of the workshop
 
 > ## A harness bounds the evidence available to the agent.
 
-Not what it *knows* — a model knows a great deal from training, can infer, and
-can spot a contradiction placed in front of it. What the harness bounds is
-**which evidence the agent can obtain, and which actions it can take, during
-this task.**
+Not what it *knows* — a model knows a great deal from training and can spot a
+contradiction placed in front of it. What the harness bounds is **which evidence
+the agent can obtain, and which actions it can take, during this task.**
 
 Inside a closed folder, an agent can tell you what the folder says, and whether
 the folder contradicts itself. It **cannot independently establish an external
-fact that requires evidence it cannot reach.** That is not the model being
-stupid, and better prompting does not fix it, because prompting cannot
-manufacture a source the system cannot access.
-
-Which gives the rule the whole workshop is built on:
+fact that requires evidence it cannot reach**, and better prompting does not fix
+that. Which gives the rule the whole workshop is built on:
 
 > **Verification requires an evidence path independent of the one that produced
 > the claim.**
 
-Note what that does *not* say. It does not say verification must happen outside
-the harness — you could give a harness its own independent lookup and let it
-verify internally. **Today we deliberately put that path outside the sandbox and
-in your hands,** because the point is for *you* to cross the boundary and feel
-where it is.
+A harness could be given its own independent lookup. **Today we deliberately put
+that path outside the sandbox and in your hands,** so that you cross the
+boundary and feel where it is.
 
 ## 4. What is GitHub? What is a Codespace?
 
@@ -181,26 +160,15 @@ Three reasons this workshop uses one:
 
 OpenClaw is a harness. It runs in the terminal, you start it with
 `openclaw chat`, and it connects a model to a set of tools and a working folder.
+Its public repository dates from **24 November 2025**; the `openclaw` package
+was first published at the end of **January 2026**.
 
-Checkable facts rather than impressions: its public repository dates from
-**24 November 2025**, with tagged releases the next day. The `openclaw` package
-was published to the public registry at the end of **January 2026**, and the
-registry currently lists **253 published versions in total**, prereleases
-included.
+A release published on **8 September 2026** raised the required version of an
+underlying runtime and broke this workshop's setup outright. It was found,
+diagnosed and pinned, so your environment is frozen to one tested version and
+you will never see the failure. **That is a harness-engineering decision too.**
 
-Worth noticing if you go and look: **the project is older than the name it
-carries.** The repository predates the `openclaw` organisation it now lives in,
-and the January release renamed work already under way. Things here get built,
-renamed and re-homed faster than anyone documents them.
-
-It is not abstract for us either. A release published on **8 September 2026** —
-the day before this material was finalised — raised the required version of an
-underlying runtime and broke this workshop's setup outright. It had to be found,
-diagnosed and pinned. Your environment is frozen to one tested version because
-of it, and you will never see the failure. **That is a harness-engineering
-decision too.**
-
-### Model or harness? — why the vendor announcements are confusing
+### Model or harness?
 
 - **Models** are Claude, GPT, Gemini. Anthropic, OpenAI and Google build these.
 - **Harnesses** are Claude Code, Codex CLI, OpenClaw — equipment *around* a model.
@@ -208,11 +176,9 @@ decision too.**
 They mix. Anthropic ships a harness around its own models; OpenAI ships Codex;
 OpenClaw is independent and can be pointed at somebody else's model. Today it is
 pointed at a Gemini-family model through OpenRouter, a switchboard that lets one
-program reach many providers.
-
-So when a vendor says its product "now has agentic capabilities," it means
-**they now ship the harness too**, instead of leaving you to assemble one. Same
-architecture. Different supplier.
+program reach many providers. So when a vendor says its product "now has agentic
+capabilities," it means **they now ship the harness too**. Same architecture.
+Different supplier.
 
 ## 6. A short timeline
 
@@ -243,13 +209,12 @@ buildings, fabrication lines and field robots. Anthropic has begun describing a
 standard intended to let agents operate physical devices, so the direction is
 not fantasy.
 
-**But be careful with the analogy — this room more than most will notice if I am
-not.** Physical systems are not "the same architecture with different hands."
-They add real-time constraints, continuous dynamics, sensor uncertainty,
-actuator limits, interlocks, irreversible consequences, certification regimes,
-stability and fault tolerance. Robotics, controls and safety engineering have
-**mature theory** for problems agent developers are only beginning to meet.
-Nobody has rediscovered control systems and renamed them.
+**But be careful with the analogy.** Physical systems are not "the same
+architecture with different hands." They add real-time constraints, continuous
+dynamics, sensor uncertainty, actuator limits, interlocks, irreversible
+consequences, certification regimes, stability and fault tolerance. Robotics,
+controls and safety engineering have **mature theory** for problems agent
+developers are only beginning to meet.
 
 What is genuinely interesting is that the same *questions* recur — authority,
 actuation limits, observability, verification, safe failure — and that the
@@ -257,21 +222,3 @@ people who already know how to answer them for physical systems are mostly not
 the people currently building agent harnesses.
 
 Several of them are in this room.
-
----
-
-## The short version
-
-- There is no agreed definition of "agent." Ours for today: it chooses an
-  action, uses a tool, observes the result, and continues without waiting for
-  you.
-- You will recognise it when it **runs something, sees it fail, and tries
-  something else on its own.**
-- Working model: **Agent ≈ Model + Harness.** The harness is the engineered
-  runtime — tools, environment, evidence, state, loop, permissions.
-- The engineering problem is **deciding which keys it gets**: what authority,
-  what boundary, whose approval, what record.
-- **A harness bounds the evidence available to the agent.** Prompting cannot
-  manufacture a source the system cannot reach.
-- Therefore **verification requires an evidence path independent of the one that
-  produced the claim** — which is exercise three.
