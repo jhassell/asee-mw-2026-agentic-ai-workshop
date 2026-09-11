@@ -2,15 +2,15 @@
 # ASEE MW 2026 — "From Chatbots to Agents" workshop setup.
 # Run this once, with your seat card in hand:   bash setup.sh
 #
-# Four characters. The code on the front of your seat card unlocks both the
+# Six characters. The code on the front of your seat card unlocks both the
 # model access and the paper corpus. If the short code gives trouble, the long
-# code on the back of the card does the same job without needing any service.
+# code on the back of the card does the same job without needing the code service.
 set -uo pipefail
 
 CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
 # Trades the 6-character seat-card code for the read-only corpus token. If this
 # is unreachable for any reason, the long code on the back of the card still
-# works and needs no service at all — that fallback is deliberate, and it is why
+# works without the code service — that fallback is deliberate, and it is why
 # both codes stay on the card. See facilitator/code-broker/ for the service.
 BROKER_URL="https://asee-mw-2026-workshop-code.hassell-ade.workers.dev"
 MODEL="openrouter/google/gemini-3.7-flash"

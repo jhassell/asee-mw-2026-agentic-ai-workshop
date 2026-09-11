@@ -29,12 +29,11 @@ to your laptop. That is *not* what you want. Click **Codespaces**, then
 
 ![Opening a Codespace: click the Codespaces tab, not Local](docs/figures/01-code-menu.svg)
 
-A browser-based editor opens and spends a minute or two building. When the
-terminal starts, a box asks **"Do you trust the authors of the files in this
+A browser-based editor opens and spends a minute or two building. When the terminal first tries to start, a box asks **"Do you trust the authors of the files in this
 folder?"** Click the green **Trust Folder & Continue** button — these are the
-workshop's own files. (Until you do, a banner across the top says *"Restricted Mode is intended
-for safe code browsing"* and the terminal will not start. That banner is
-expected; clicking Trust Folder & Continue makes it go away.)
+workshop's own files. (Until you answer, the terminal stays blank and you will see *Restricted Mode* —
+in a banner across the top and in the bottom bar. Clicking Trust Folder &
+Continue clears both.)
 
 ![The real trust dialog: click the green Trust Folder and Continue button](docs/screenshots/A-trust-folder-and-continue.png)
 
@@ -48,9 +47,9 @@ an API key of your own — one is provided at the session.
 what you are actually going to be using — what an agent is (and why the experts
 still disagree), why it is not a chatbot, what a *harness* is and why that may
 be a new engineering discipline, what GitHub and Codespaces and OpenClaw are,
-and where all of this appears to be heading. None of this vocabulary is more
-than about eighteen months old, so nobody should feel behind. You can also read
-it afterwards — there is a printed short version on your chair.
+and where all of this appears to be heading. Most of this vocabulary, in the
+sense used here, is only a year or two old, so nobody should feel behind. You
+can also read it afterwards — there is a printed short version on your chair.
 
 Bring a laptop that can run a modern browser (Chrome, Edge, Firefox, or
 Safari) and that you can type on comfortably for 90 minutes.
@@ -66,23 +65,24 @@ Then:
 0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
    accept, then check that <https://github.com> loads.
 
-   **If you created your Codespace before September 9**, delete it at
-   <https://github.com/codespaces> and create a fresh one. An early one still
-   has an old setup script inside it and will make you run `bash setup.sh`
-   twice. Deleting costs nothing — you have not put any work in it yet.
-
 1. Open your Codespace: green **Code** button → **Codespaces** tab (the
-   right-hand tab, not **Local**) → **Create codespace on main**. If you are
-   asked whether you trust the authors of the files in this folder, say yes.
+   right-hand tab, not **Local**). If you made one before the session, it is
+   listed there under a made-up name like *scaling space umbrella* — click it.
+   Click **Create codespace on main** only if the list is empty. When the
+   terminal first tries to start and asks whether you trust the authors of the files in this
+   folder, click the green **Trust Folder & Continue** button.
 
 2. A terminal is already open across the bottom of the window. If you don't
-   see one, or you close it by accident: **Terminal → New Terminal** from the
-   menu, or press <kbd>Ctrl</kbd>+<kbd>`</kbd> (the backtick key, top left of
-   the keyboard). In it, run:
+   see one, or you close it by accident: click the **+** at the top right of
+   the terminal panel (if the whole panel is gone: the **☰** menu at the top
+   left, then **Terminal → New Terminal**). In it, run:
 
    ```bash
    bash setup.sh
    ```
+
+   If it stops and tells you to re-run it, run `bash setup.sh` once more. That
+   is expected with a Codespace made before the conference.
 
 ![The Codespace layout: explorer, editor, and the terminal where the agent lives](docs/figures/03-codespace-layout.svg)
 
@@ -93,10 +93,7 @@ Then:
      movement at all — the code is hidden so it can't be read off your screen.
      It *is* going in, and the script **echoes it back to you** as soon as you
      press Enter so you can check it landed.
-   - Case doesn't matter. The codes deliberately avoid every character that
-     looks like another one — there is no `O`, `0`, `1`, `I`, `L`, `S`, `Z`,
-     `B` or `G` in any of them — and common misreads are forgiven anyway, so a
-     `G` typed for a `6` still works.
+   - Capitals don't matter, and common misreads (a `G` for a `6`) are forgiven.
 
 ![What you really see at the code prompt](docs/screenshots/D-code-prompt.png)
 
@@ -105,10 +102,10 @@ Then:
 ![The code echoed back after Enter](docs/screenshots/E-code-echoed-back.png)
 
    If it isn't accepted, the script asks again on the spot; you don't start
-   over. If it still won't take, **turn the card over and paste the long code
-   instead** — that one works without needing the network to cooperate. If you
-   paste it, Chrome may ask to see your clipboard (click **Allow**) and the
-   terminal may show its own paste warning (paste anyway).
+   over. If it still won't take, **turn the card over and type the long code
+   at the same prompt** — carefully, capitals matter in that one. It skips the
+   code service and goes straight to GitHub. The script replies with how many
+   characters it received.
 
 4. Wait for **READY**. This takes a few seconds.
 
@@ -117,6 +114,10 @@ Then:
    ```bash
    openclaw chat
    ```
+
+6. In the file list on the left, click **exercises**, then
+   **pass-1-underspecified.md**. It opens in the large area above the terminal.
+   Read there; type and paste only in the terminal.
 
 The setup step downloads the workshop paper corpus and configures the agent
 for you. If anything fails, it will tell you exactly what to do next — and
@@ -127,7 +128,8 @@ raising a hand is always a valid next step.
 ## What is this stuff?
 
 If "agent," "harness," "Codespace" or "OpenClaw" are new to you, that is the
-normal condition, not a gap — the words are about eighteen months old.
+normal condition, not a gap — most of these words, in the sense used here,
+are only a year or two old.
 [`PRIMER.md`](PRIMER.md) is a ten-minute read that explains all of them in
 plain terms, including the honest admission that there is no settled definition
 of "agent" even among the people building these things.
@@ -181,15 +183,18 @@ their respective authors.
 
 Your Codespace is yours alone — no one else can see it.
 
-**Before you leave, please delete it.** This is the one thing we ask of you.
-Your Codespace holds ASEE-licensed papers and a temporary workshop credential,
-and ASEE's permission is conditioned on those environments being retired after
-the session. Nobody but you can delete it — it lives in your account, not ours.
+**Before you leave the conference, please delete it.** This is the one thing we
+ask of you. Your Codespace holds ASEE-licensed papers and a temporary workshop
+credential, and ASEE's permission is conditioned on those environments being
+retired after the session. Nobody but you can delete it — it lives in your
+account, not ours.
 
-1. Save anything you want to keep: your report, your brief, your notes.
+1. Save anything you want to keep: your report, your brief, your notes
+   (right-click a file in the list on the left, then **Download**).
 2. Go to <https://github.com/codespaces>.
-3. Delete the one named after **asee-mw-2026-agentic-ai-workshop**, and check
-   that it is gone from the list.
+3. Find the one listed under **jhassell/asee-mw-2026-agentic-ai-workshop** (its
+   own name is random, like *scaling space umbrella*), click its **…** menu,
+   choose **Delete**, and check that it is gone from the list.
 
 ![Deleting your Codespace from github.com/codespaces](docs/figures/06-delete-codespace.svg)
 
@@ -203,14 +208,15 @@ on this Codespace surviving.
 
 | What you see | What to do |
 |---|---|
-| The **Code** button only offers to clone or download | You're on the **Local** tab. Click the **Codespaces** tab beside it. |
+| The **Code** button only offers to clone or download | You're on the **Local** tab, or not signed in. Click the **Codespaces** tab beside it; if there is no such tab, sign in first (top right). |
 | "Do you trust the authors of the files in this folder?" | Click the green **Trust Folder & Continue**. These are the workshop's own files. |
+| The bottom bar says **Restricted Mode** and the terminal stays blank | You clicked **Cancel** on that prompt. Click **Restricted Mode** in the bottom bar, then **Trust**. |
 | Chrome asks to see your clipboard | Click **Allow** — that's how the paste reaches the terminal. |
 | The terminal warns you about pasting | Choose the option that pastes anyway. |
 | Nothing appears when you type the code | Expected. The code is hidden on purpose. Press Enter and the script echoes it back to you. |
-| The 6-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and paste the long code; it needs no network service. |
-| "Could not reach the code service" | Use the long code on the back of the card. |
-| You closed the terminal | **Terminal → New Terminal**, or <kbd>Ctrl</kbd>+<kbd>`</kbd>. |
+| The 6-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and type the long code at the same prompt; it does not need the code service. |
+| "Could not reach the code service" | Run `bash setup.sh` again and type the long code from the back of the card. |
+| You closed the terminal | Click the **+** at the top right of the terminal panel, or **☰** → **Terminal** → **New Terminal**. |
 | `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |
 | `openclaw: command not found` | Run `bash setup.sh`. It installs the agent itself if the container didn't. |
 | Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee-mw-2026-agentic-ai-workshop), then create a new one. Leave any other Codespaces alone. |

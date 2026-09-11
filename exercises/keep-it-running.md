@@ -16,9 +16,11 @@ a key. Here is how to have your own, for about the cost of a lunch.
 **First, before you leave: delete today's Codespace.** It holds ASEE-licensed
 papers and the workshop credential, and retiring it is a condition of the
 permission that let us use the papers at all. Only you can do it — it is in
-your account. Save your report and brief first, then go to
-<https://github.com/codespaces> and delete the one named after
-**asee-mw-2026-agentic-ai-workshop**. Nothing below depends on it surviving.
+your account. Save your report and brief first (right-click each in the file
+list, then **Download**), then go to <https://github.com/codespaces>, find the
+one listed under **jhassell/asee-mw-2026-agentic-ai-workshop** (its own name is
+random), and choose **Delete** from its **…** menu. Nothing below depends on it
+surviving.
 
 ---
 
@@ -31,11 +33,10 @@ your account. Save your report and brief first, then go to
    minute for your whole account.
 3. **Open a Codespace on your fork** (Code > Codespaces > Create codespace
    on main).
-4. **Create one file and run setup.** In the terminal:
-   ```
-   nano my-openrouter.key
-   ```
-   Paste your key on one line, press Ctrl+O, Enter, Ctrl+X. Then:
+4. **Create one file and run setup.** In the file list on the left,
+   right-click below the last file, choose **New File...**, name it
+   `my-openrouter.key`, paste your key on one line, and save (Cmd+S on a
+   Mac, Ctrl+S elsewhere). Then, in the terminal:
    ```
    bash setup.sh
    ```

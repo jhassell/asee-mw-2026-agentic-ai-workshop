@@ -12,8 +12,7 @@ are thin? Show me."
 Annual Conference AI and data-science track. ASEE provided them for this
 session only. Do not copy them out of this environment.
 
-Before you start, `bash setup.sh` must have printed **READY**, and
-`ls corpus/papers | wc -l` must say **79**.
+Before you start, `bash setup.sh` must have printed **READY** and **(79 files)**.
 
 ## Files, in order
 
@@ -46,17 +45,15 @@ that matters, and it works on anyone's report.
 
 ## If the words are new
 
-"Agent," "harness," "Codespace," "OpenClaw" — all about eighteen months old, so
-being new to them is the normal condition. [`../PRIMER.md`](../PRIMER.md) is a
-ten-minute plain-English explanation, and there is a printed short version on
-your chair. The one line worth having now: **Agent = Model + Harness.** The
-model decides what to do; the harness gives it hands, a place to act, and
-limits. A chatbot has no harness, which is why nothing happens between your
-turns.
+The printed sheet on your chair explains them. Read [`../PRIMER.md`](../PRIMER.md)
+after the session, not during it.
 
-## Two rules that save time
+## Three rules that save time
 
-- The agent prompt and the plain terminal are different things. The agent
-  prompt is where you paste instructions. The plain terminal (Terminal >
-  New Terminal, a `$` prompt) is where you run the checks in pass 3.
+- Click once inside the terminal before you paste. Pasting into the editor
+  puts the prompt into the exercise file, and nothing reaches the agent.
+- The agent and the plain terminal are different things. The agent is the
+  terminal where you ran `openclaw chat`; you paste instructions there. The
+  plain terminal (the **+** at the top right of the terminal panel; its line
+  ends in `$`) is where you run the checks in pass 3.
 - Nothing has scrolled for two minutes: raise a hand.

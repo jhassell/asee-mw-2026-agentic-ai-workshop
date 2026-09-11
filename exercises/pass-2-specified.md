@@ -3,14 +3,15 @@
 Same task. Now with the three things the room just asked for: what exactly
 to look at, what shape the answer takes, and how we will know it is right.
 
-**Write criterion 5 before you paste.** It is the one line in this file that
-is yours — and you already wrote it. It is the thing you said in pass 1 that
-the result would have to show you so you could check it yourself. Phrase it as
-something the agent can visibly satisfy or visibly fail. Copy it onto your exit
-card too.
+**Before you paste:** in the editor, select `[WRITE YOUR OWN CRITERION HERE]`
+below and type over it the line you wrote in pass 1 (line 1 of your exit
+card), phrased so the agent can visibly meet it or visibly fail it. Changing
+this file is fine.
 
-Copy everything between the lines, fill in criterion 5, paste it at the
-agent prompt, and press Enter.
+Then select from `Read the YAML frontmatter` to the end of your criterion and
+copy it — not the lines of three backticks. Click once inside the terminal,
+paste, and press Enter. (Frontmatter is the labelled block at the top of each
+paper file: ID, title, key terms. The other technical words are for the agent.)
 
 ```
 Read the YAML frontmatter (paper_id, title, key_terms) of every file in
@@ -66,12 +67,6 @@ file list on the left).
 Then look at the spec again. Which words changed a paragraph into a table?
 Was your criterion 5 met? Underline the words that did the work.
 
-One thing to notice about section 3 while you are there: the agent can tell you
-what is thin in *this folder*. It cannot tell you what is missing from your
-field, and neither can you without a search method you could defend. If your
-report slid from one to the other, that is the same overclaim we are here to
-catch — made by you this time, not by the agent.
-
 ## If this went wrong
 
 - It wrote the report but no chart: paste `Now save coverage.png as
@@ -80,3 +75,5 @@ catch — made by you this time, not by the agent.
   continue` and press Enter.
 - It is still running at the ten-minute mark: raise a hand and look at your
   neighbor's report instead. Pass 3 works on any report.
+- You are back at a line ending in `$` and the agent is gone: type
+  `openclaw chat` and press Enter, then paste again.

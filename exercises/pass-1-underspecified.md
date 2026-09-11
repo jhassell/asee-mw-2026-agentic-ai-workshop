@@ -1,10 +1,11 @@
 # Pass 1: ask badly
 
-**Where you are:** the agent prompt is open in your terminal. If it is not,
-type `openclaw chat` and press Enter.
+**Where you are:** in the terminal at the bottom of the screen, you have typed
+`openclaw chat` and it is waiting for you. That is the agent prompt. If you
+have not started it, click in the terminal, type `openclaw chat`, press Enter.
 
-Copy this line, paste it at the agent prompt, press Enter, and do not help
-it:
+Copy this line, click once inside the terminal, paste it there, press Enter,
+and do not help it:
 
 ```
 What topics do the papers in corpus/papers cover, and what's missing?
@@ -19,20 +20,15 @@ two questions:
    act on it, **write one specific thing the result would have to show you
    that you could go and check yourself.**
 
-Question 2 is the one that matters, and note what it is not asking. It is not
-asking what you would *say* to that colleague — "how did you do this?" is a
-conversation, not a criterion. It is asking what the result would have to
-*contain* for you to be able to verify it without taking anyone's word for it.
-
-Write that on your card. It becomes criterion 5 in the next pass, in your own
-words, and you will watch the agent meet it.
-
-If the answer looks good anyway, ask a third question: which requirements
-did it decide on its own, and would you trust it to decide them the same
-way on a task you cared about?
+Write what the result would have to *contain*, not what you would ask the
+colleague. Write it on line 1 of your exit card (the one with four numbered
+lines). It becomes criterion 5 in the next pass, and you will watch the agent
+meet it.
 
 ## If this went wrong
 
 - Nothing happened for two minutes: raise a hand.
-- `command not found`: type `openclaw chat` and press Enter, then paste again.
+- `bash: What: command not found` (or similar): you pasted into the plain
+  terminal, not the agent. Type `openclaw chat`, press Enter, then paste again.
+  If it says `openclaw: command not found`, run `bash setup.sh` first.
 - It asked you a question: answer "just do your best" and press Enter.
