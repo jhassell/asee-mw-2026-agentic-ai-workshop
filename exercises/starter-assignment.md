@@ -32,7 +32,9 @@ well:
 
 - **A prompt changelog.** Prompts are load-bearing code. Version them.
 - **A build journal graded on honesty about failure**, not on polish.
-- **A required caught mistake.** The assistant will make one. Say which one.
+- **A required documented hunt for a mistake.** The assistant will almost certainly make one.
+  Say which one — and if a real hunt comes back clean, show the hunt. The
+  documented hunt is what earns the credit, not the catch.
 
 The course sequenced its assignments by failure mode rather than by feature.
 This assignment inherits exactly one failure mode, the one that matters most
@@ -56,8 +58,8 @@ assistant. Track B needs a coding agent. **Pick Track A unless you already run
 a course where students use Git.** Track A is the version that works in a
 statics section on a Tuesday. Both appear in the handout below and you delete the one
 you are not using before you hand it out. Track A is written out in full.
-Track B is a one-line placeholder, because the environment, the tool, and the
-key handling are different at every institution and only you know yours.
+Track B is a placeholder you fill in, because the environment, the tool, and
+the key handling are different at every institution and only you know yours.
 
 **3. Decide whether to seed a defect.** This is optional, it takes about twenty
 minutes, and it roughly doubles what the assignment teaches. Instructions are
@@ -68,8 +70,8 @@ them without help.
 **4. Decide what "verified" means for your task.** Write down, for yourself,
 the two or three checks that would catch a wrong answer in your discipline: a
 units check, a limit case, a conservation law, a recount against the raw data,
-a lookup in the actual standard. You will paste these into the *Verification*
-section of the handout. This is the part only you can supply, and it is the
+a lookup in the actual standard. You will paste these into the list of checks
+in *Pass 3* of the handout. This is the part only you can supply, and it is the
 part that makes the assignment yours rather than a generic AI-literacy
 exercise.
 
@@ -100,8 +102,8 @@ difference, and it cannot warn you.
 
 So this assignment does not grade the deliverable very heavily. It grades what
 you can prove about the deliverable — how precisely you asked, what you
-checked, what you caught, and what you would tell a colleague who has to trust
-your work.
+checked and what it showed, and what you would tell a colleague who has to
+trust your work.
 
 ### Learning objectives
 
@@ -114,12 +116,15 @@ When you finish this assignment you will be able to:
    specified one, and describe the difference in concrete terms rather than in
    impressions.
 3. **Verify** an AI-generated technical claim against a source of truth
-   independent of the assistant, and identify at least one specific error.
+   independent of the assistant, and either identify at least one specific
+   error or show the checks that established there was none.
 4. **Document** your use of AI in a form another engineer can audit: what you
    asked, what changed, what you observed, and how you checked.
 
-Objectives 1–2 are assessed by `PROMPTS.md`. Objective 3 is assessed by
-`VERIFICATION.md`. Objective 4 is assessed by `JOURNAL.md`.
+Objective 1 is assessed by your final specification and `PROMPTS.md`.
+Objective 2 is assessed by the *what the specification bought me* field in
+`JOURNAL.md`. Objective 3 is assessed by `VERIFICATION.md`. Objective 4 is
+assessed by `JOURNAL.md`.
 
 ### What you need
 
@@ -133,8 +138,9 @@ and the agent tool we set up in class.
 **[INSTRUCTOR: if you are running Track B, replace that sentence with the
 actual name of your environment, how students open it, and where they get
 whatever key or login it needs. Track B is a placeholder here because it is
-different at every institution. If you are running Track A, delete the Track B
-line entirely before you hand this out.]**
+different at every institution. If you are running Track A, delete every
+Track B line — here, in *What you submit*, and in the Deliverable row of
+*Grading* — before you hand this out.]**
 
 You will not be asked to pay for anything. Do not buy a subscription for this
 assignment. If a tool asks for a credit card, stop and use a different one.
@@ -215,9 +221,7 @@ Use these checks:
 > *Examples of the right level of concreteness:*
 > - *Does the claimed size of the source match its actual size?*
 >   `wc -w file` *against the size the metadata claims.*
-> - *Does the identifier printed inside the document match the filename?*
 > - *Does the document have a reference list at all?*
-> - *Do any two entries have identical content under different names?*
 > - *Do the units resolve? Does the limit case behave?*
 > - *Does the number appear, verbatim, in the source it is attributed to?*
 
@@ -234,26 +238,42 @@ Then tell me which of your citations you would now withdraw.
 Record what it withdrew, and — this matters more — record anything **you**
 caught that it did not.
 
-**You must find and document at least one error.** Not a typo: a substantive
-error. A fabricated source, an invented number, a miscount, a claim about a
+**You must hunt for at least one substantive error, and document the hunt
+whether or not it finds one.** Substantive means not a typo: a fabricated source, an invented number, a miscount, a claim about a
 source that the source does not support, a step that was reported as done and
 was not.
 
-If you genuinely believe there are none, that itself is a finding, and you
-report it in `VERIFICATION.md` by listing every check you ran and what each
-returned. But look again first, and check the most impressive claim against
-its original source rather than against the assistant. "I found nothing" and
-"I stopped looking" produce the same submission, and only one of them is
-worth points.
+If you genuinely believe there are none, look again first, and check the most
+impressive claim against its original source rather than against the
+assistant. Then report what you did. The rule that governs this:
+
+**The clean-result rule.** Full credit for Verification requires a documented
+hunt, not a particular outcome. The checks must be real, independent of the
+assistant, and shown rather than described, and they must include tracing the
+single most impressive claim to its original source. If the hunt caught an
+error, the error is stated specifically: what was claimed, what is actually
+true, and how that was established. If every check came back clean, that is
+reported the same way, check by check, with what each returned, and earns the
+same credit as a documented catch. A bare "I found no errors" with no checks
+shown is an assertion, not a verification, and is scored as one.
+
+"I found nothing" and "I stopped looking" produce the same one-line claim.
+Only the version that shows every check is worth points.
 
 ### What you submit
 
-Four things. Plain text or Markdown files, or a single PDF containing all
-four, clearly separated.
+Four things. **Track A:** plain text or Markdown files, or a single PDF
+containing all four, clearly separated. **Track B:** the same four things,
+committed in the repository your section was told to use, so that your prompt
+versions and revisions are in the commit history and not only in a document.
+**On either track, never commit or submit an API key, password, or other
+credential.**
 
 **1. The deliverable** — the Pass 2 output, revised by you if you found errors
-in Pass 3. Mark your revisions. **Attach the raw Pass 1 exchange as well**,
-prompt and full response, so the comparison in your journal can be checked.
+in Pass 3. Mark your revisions. **Attach the raw Pass 1 exchange and the saved
+final Pass 2 exchange as well**, on either track, prompt and full response for
+each, so the comparison in your journal can be checked and your final
+specification is on record.
 
 **2. `PROMPTS.md` — the prompt changelog.**
 
@@ -279,6 +299,10 @@ that is a v3 problem.
 points for that entry.** State what you changed, what you expected, and what
 you observed. Those three fields are the entry.
 
+**The full text of every version must be in the submission.** Track A: paste
+each version's full text under its entry. Track B: the commit history holds
+every version; name the commit in the entry.
+
 **3. `JOURNAL.md` — the build journal.**
 
 One entry per pass — three entries. Four to eight sentences each. Four
@@ -301,7 +325,11 @@ Write it like a lab notebook, not like an essay. It is graded on completeness
 and honesty about failures, **not on polish**. A journal reporting three
 failures and how you got past them scores higher than a journal reporting
 that everything went smoothly. If everything went smoothly, you did not look
-closely enough, and the journal is where that shows.
+closely enough, and the journal is where that shows. The one exception is a
+Pass 3 hunt that came back clean: that entry reports what the hunt found — a
+failure, or the checks you ran and what each showed — and it earns the same
+credit as a catch if it is specific enough to check against your
+`VERIFICATION.md`.
 
 This journal is also your AI-use disclosure for this assignment. See *Ground
 rules*.
@@ -310,8 +338,10 @@ rules*.
 
 - Every check you ran, and what it returned. Include the checks that found
   nothing; a check that came back clean is evidence too.
-- **At least one substantive error, stated specifically.** What was claimed,
-  what is actually true, and how you established it.
+- **Each substantive error you found, stated specifically.** What was claimed,
+  what is actually true, and how you established it. If every check came back
+  clean, say so under the clean-result rule in *Pass 3*: the checks and their
+  results are the finding.
 - What the assistant withdrew when you asked it to audit itself, and what it
   did not withdraw that it should have.
 - A closing line: `Not checked: ...` — everything you did not have time or
@@ -322,14 +352,15 @@ rules*.
 
 | Component | Points | What earns them |
 |---|---:|---|
-| Specification (your final prompt, plus both transcripts) | 20 | Scope, output format, and at least two acceptance criteria the assistant can fail. The "what the specification bought me" field in your Pass 2 journal entry states the difference from Pass 1 in countable terms rather than impressions. |
-| `VERIFICATION.md` | 25 | Checks are real and independent of the assistant. At least one substantive error found and evidenced. |
-| `JOURNAL.md` | 25 | Three entries, four fields each, specific and honest. Failures described concretely enough to be checked against your own files. |
-| `PROMPTS.md` | 15 | Real revision history. Each entry states what changed, what was expected, what was observed. |
-| Deliverable | 15 | Correct, complete, in the requested format. |
+| Specification (your final prompt, plus both transcripts) | 20 | Scope, output format, and at least three acceptance criteria the assistant can fail, the two required ones among them. The "what the specification bought me" field in your Pass 2 journal entry states the difference from Pass 1 in countable terms rather than impressions. |
+| `VERIFICATION.md` (the rubric's *Verification*) | 25 | Checks are real, independent of the assistant, and shown rather than described; the most impressive claim is traced to its original source; the self-audit record and the closing `Not checked:` line are present. Any error found is stated specifically; a clean result is reported check by check, under the clean-result rule in *Pass 3*. |
+| `JOURNAL.md` (the rubric's *Failure account*) | 25 | Three entries, four fields each, specific and honest. Failures — or, for a Pass 3 hunt that came back clean, the checks run and what each showed — described concretely enough to be checked against your own submitted files. |
+| `PROMPTS.md` (the rubric's *Prompt changelog*) | 15 | Real revision history. Each entry states what changed, what was expected, what was observed; the full text of every version is in the submission. |
+| Deliverable (the rubric's *Artifact*) | 15 | Correct, complete, in the requested format, with your Pass 3 revisions marked. Track B, when the deliverable is code: it also runs as specified from a clean checkout. |
 
-These five rows are the five criteria in `rubric-template.md`, with the same
-weights, so the rubric's performance levels apply directly.
+These five rows are the five criteria in `rubric-template.md`, in the same
+order and with the same weights, so the rubric's performance levels apply
+directly.
 
 **The deliverable is worth 15 of 100 on purpose.** A flawless result with no
 failure narrative is an incomplete submission. What is being assessed is
@@ -369,7 +400,7 @@ leave students pointed at a document they do not have.]**
 | No access to an AI assistant | Email me before the due date. There is a no-account version and it is not worth fewer points. |
 | The assistant refuses the task | Note the refusal in `JOURNAL.md` as an observed failure, then narrow the request and try again. A refusal is data. |
 | The output is different every time you run it | Expected. These systems are not deterministic. Record it in `JOURNAL.md` — that variability is itself one of the findings. |
-| You cannot find any error at all | Re-read *Pass 3*, then check the single most impressive claim against its original source rather than against the assistant. |
+| You cannot find any error at all | Re-read *Pass 3*, then check the single most impressive claim against its original source rather than against the assistant. If it still comes back clean, submit `VERIFICATION.md` with every check and what it returned: under the clean-result rule, a documented clean result earns the same credit as a catch. |
 | A tool asks you to pay | Stop. Use a different one, or email me. Nothing here requires a purchase. |
 | You are two hours in and lost | Email me with your `PROMPTS.md` as it stands. That file is enough for me to see where you are. |
 
@@ -473,9 +504,7 @@ them."* They know a defect may be there. They still have to do the work to
 find it, and the ones who skip verification still miss it.
 
 **Two defects, both about twenty minutes to make, and both effective.** They
-teach different things, and the workshop exercise you are sitting in uses
-both — the specifics of those two are in the facilitator materials, not here,
-for reasons that will be obvious by the end of the session.
+teach different things.
 
 **1. The fabrication.** Add one item that does not exist. Write it to be
 maximally attractive: the cleanest result, the largest effect, the most
@@ -580,15 +609,24 @@ friction they add:**
    exhaust the class. If you go here, cap it: tell students a dollar figure,
    and tell them to stop and email you rather than spend past it.
 5. **Instructor-run — this is the "no-account version" the handout promises.**
-   The handout tells students three times that a no-account path exists and
+   The handout tells students twice that a no-account path exists and
    costs them no points. This is it, and you should have it built before the
    assignment goes out rather than improvised when someone emails you. Run the
-   three passes yourself, capture the transcripts, and hand them out. Those
-   students do Pass 3 on your transcripts and submit `VERIFICATION.md` and
-   `JOURNAL.md` as normal; `PROMPTS.md` becomes a written critique of your
-   specification and what they would have changed. They lose the experience of
-   specifying and keep the experience of verifying, which is the half this
-   assignment is actually about. Grade it out of the same 100.
+   three passes yourself, including the self-audit prompt from *Pass 3*,
+   capture all four transcripts, and hand them out. Those students do Pass 3
+   on your transcripts — their self-audit record is what your self-audit
+   transcript withdrew and what it should have — and submit the deliverable,
+   `VERIFICATION.md`, and `JOURNAL.md` as normal; `PROMPTS.md` becomes a
+   written critique of your specification: the specification they would have
+   run instead of yours, plus one entry per change they would make, each
+   stating what they would change, what they expect it to fix, and what in
+   your transcript shows it is needed. They lose the experience of specifying
+   and keep the experience of verifying, which is the half this assignment is
+   actually about. Grade it out of the same 100: their rewritten specification
+   is graded as row 1 (Specification), with the "what the specification bought
+   me" field computed from your two transcripts; their change entries are
+   graded as row 4 (Prompt changelog); rows 2, 3, and 5 grade as written. The
+   rubric says the same under *The no-account version*.
 
 **Four rules regardless of budget.**
 
@@ -665,12 +703,12 @@ July 2026, described in: Hassell, J., Pearson, T., and Sayapaneni, V.,
 and First-Offering Experience*, 2026 ASEE Midwest Section Conference.
 
 The three mechanisms kept here — the prompt changelog, the honesty-graded
-build journal, and the required documented caught mistake — are the elements
+build journal, and the required documented hunt for a mistake — are the elements
 of that course that cost nothing to adopt and require no tooling beyond
 whatever you already use to collect work.
 
-If you keep only one thing from this handout, keep the **required caught
-mistake**. It is one line in an assignment specification, it costs nothing,
+If you keep only one thing from this handout, keep the **required documented
+hunt**. It is one line in an assignment specification, it costs nothing,
 and it changes what students optimize for.
 
 Questions, or you adapted it and want to tell someone how it went:
