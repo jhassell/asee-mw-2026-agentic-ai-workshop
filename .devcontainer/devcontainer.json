@@ -28,7 +28,16 @@
     "ghcr.io/devcontainers/features/sshd:1.1.0": { "version": "1.1.0" }
   },
 
-  "postCreateCommand": "bash .devcontainer/postCreate.sh",
+  // onCreateCommand, NOT postCreateCommand: GitHub runs onCreateCommand inside a
+  // Codespaces prebuild and never runs postCreateCommand there. Until 2026-09-12
+  // the installs ran in postCreateCommand, so a prebuild would have captured none of
+  // them and every participant would still wait for npm and pip.
+  "onCreateCommand": "bash .devcontainer/postCreate.sh",
+
+  // Four cores minimum (John's decision, 2026-09-12). Smaller machines are not
+  // offered, so the codespaces.new link creates a 4-core Codespace by default.
+  // Billed to each participant's own free allowance: 90 minutes = 6 of 120 core-hours.
+  "hostRequirements": { "cpus": 4 },
   "forwardPorts": [18789, 8000],
   "portsAttributes": {
     "18789": { "label": "OpenClaw gateway" },

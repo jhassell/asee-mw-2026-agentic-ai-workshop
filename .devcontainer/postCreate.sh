@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Runs once when the Codespace is created (and is baked into prebuilds).
+# Runs as the devcontainer's onCreateCommand: inside the Codespaces prebuild, so the
+# tools are baked into the prebuilt image, or once at creation if no prebuild exists.
 #
 # Deliberately NO blanket `set -e`. On 2026-09-08 the openclaw install failed
 # and took pandas/matplotlib down with it, so a participant lost both the
@@ -37,6 +38,21 @@ if pip install --user --quiet "pandas==${PANDAS_VERSION}" "matplotlib==${MATPLOT
 else
   echo "pandas/matplotlib did not install here — setup.sh will install them."
 fi
+
+# GATE. Each install above tolerates failure so one error cannot take the other
+# down, but a prebuild must not be marked ready without the tools in it: that would
+# silently send all 24 participants through the slow repair in setup.sh. Check the
+# real thing, not a log line, and fail the lifecycle command if either is missing.
+FAIL=
+openclaw --version 2>/dev/null | grep -qF "$OPENCLAW_VERSION" \
+  || { echo "GATE FAILED: openclaw ${OPENCLAW_VERSION} is not installed"; FAIL=1; }
+python3 -c 'import pandas, matplotlib' 2>/dev/null \
+  || { echo "GATE FAILED: pandas/matplotlib do not import"; FAIL=1; }
+if [ -n "$FAIL" ]; then
+  echo "Tooling incomplete. In a participant Codespace, bash setup.sh repairs it."
+  exit 1
+fi
+echo "GATE PASSED: openclaw ${OPENCLAW_VERSION}, pandas, matplotlib"
 
 echo ""
 echo "=============================================="
