@@ -18,14 +18,14 @@ papers and the workshop credential, and retiring it is a condition of the
 permission that let us use the papers at all. Only you can do it — it is in
 your account. Save your report and brief first (right-click each in the file
 list, then **Download**), then go to <https://github.com/codespaces>, find the
-one listed under **jhassell/asee-mw-2026-agentic-ai-workshop** (its own name is
+one listed under **jhassell/asee9** (its own name is
 random), and choose **Delete** from its **…** menu. Nothing below depends on it
 surviving.
 
 ---
 
 1. **Fork the repo.** On
-   <https://github.com/jhassell/asee-mw-2026-agentic-ai-workshop> click
+   <https://github.com/jhassell/asee9> click
    **Fork**. You now own a copy.
 2. **Get a model key.** Create an account at <https://openrouter.ai>, add
    $10 of credit, and create an API key. Copy it somewhere safe. Do not use

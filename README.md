@@ -18,16 +18,13 @@ If you don't have one: <https://github.com/signup>. Any email works. You do
 not need a paid plan, and you will not be asked for a credit card.
 
 **2. Confirm you can open a Codespace.**
-Sign in to GitHub, come back to this page, and click the green **Code** button
-at the top right of the file list. A small panel drops down with **two tabs**:
+In your laptop's browser, go to
 
-> **Local**  |  **Codespaces**   ← click the **Codespaces** tab, on the right
+> **<https://codespaces.new/jhassell/asee9>**
 
-The panel opens on **Local** by default, which offers to clone the repository
-to your laptop. That is *not* what you want. Click **Codespaces**, then
-**Create codespace on main**.
-
-![Opening a Codespace: click the Codespaces tab, not Local](docs/figures/01-code-menu.svg)
+Sign in to GitHub if it asks (it brings you straight back), then click the green
+**Create codespace** button. If GitHub emails you a verification code when you
+sign in, that is normal; have your email open.
 
 A browser-based editor opens and spends a minute or two building. When the terminal first tries to start, a box asks **"Do you trust the authors of the files in this
 folder?"** Click the green **Trust Folder & Continue** button — these are the
@@ -65,10 +62,10 @@ Then:
 0. Join the **OUGuest** wifi. A browser page asks you to accept the terms;
    accept, then check that <https://github.com> loads.
 
-1. Open your Codespace: green **Code** button → **Codespaces** tab (the
-   right-hand tab, not **Local**). If you made one before the session, it is
-   listed there under a made-up name like *scaling space umbrella* — click it.
-   Click **Create codespace on main** only if the list is empty. When the
+1. In your laptop's browser, go to **<https://codespaces.new/jhassell/asee9>**,
+   sign in to GitHub if asked (keep your email open in case GitHub sends a
+   verification code), and click **Create codespace**. Make a fresh one even
+   if you made one before the session. When the
    terminal first tries to start and asks whether you trust the authors of the files in this
    folder, click the green **Trust Folder & Continue** button.
 
@@ -192,7 +189,7 @@ account, not ours.
 1. Save anything you want to keep: your report, your brief, your notes
    (right-click a file in the list on the left, then **Download**).
 2. Go to <https://github.com/codespaces>.
-3. Find the one listed under **jhassell/asee-mw-2026-agentic-ai-workshop** (its
+3. Find the one listed under **jhassell/asee9** (its
    own name is random, like *scaling space umbrella*), click its **…** menu,
    choose **Delete**, and check that it is gone from the list.
 
@@ -217,9 +214,9 @@ on this Codespace surviving.
 | The 6-character code isn't accepted | Check it against the card, then try again — the script asks again in place. Still no? Turn the card over and type the long code at the same prompt; it does not need the code service. |
 | "Could not reach the code service" | Run `bash setup.sh` again and type the long code from the back of the card. |
 | You closed the terminal | Click the **+** at the top right of the terminal panel, or **☰** → **Terminal** → **New Terminal**. |
-| `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee-mw-2026-agentic-ai-workshop` and try again. |
+| `bash: setup.sh: No such file or directory` | You're in the wrong folder. Run `cd /workspaces/asee9` and try again. |
 | `openclaw: command not found` | Run `bash setup.sh`. It installs the agent itself if the container didn't. |
-| Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee-mw-2026-agentic-ai-workshop), then create a new one. Leave any other Codespaces alone. |
+| Codespace won't start | At <https://github.com/codespaces>, delete only an earlier Codespace made from **this** repository (asee9), then create a new one. Leave any other Codespaces alone. |
 | Anything else | Raise a hand. |
 
 ---

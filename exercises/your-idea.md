@@ -89,7 +89,7 @@ it: hassell@ou.edu.
 
 Download `my-positioning.md` first (right-click it in the file list, then
 **Download**). Then delete the Codespace at <https://github.com/codespaces>:
-find the one listed under **jhassell/asee-mw-2026-agentic-ai-workshop**, click
+find the one listed under **jhassell/asee9**, click
 its **…** menu, choose **Delete**. That is the one thing we ask of you, and it
 is the condition ASEE set for letting us use the papers at all.
 
