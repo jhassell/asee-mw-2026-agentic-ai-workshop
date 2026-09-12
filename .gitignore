@@ -21,4 +21,3 @@ __pycache__/
 # [I-1]..[I-5] items needing John's decisions. It was committed by accident on
 # 2026-09-09 via `git add exercises/` and removed the same evening. Ignored here
 # so that cannot happen again. Delete these three lines when the file is ready.
-exercises/what-went-wrong.md
