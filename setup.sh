@@ -13,7 +13,7 @@ CORPUS_REPO="jhassell/asee-mw-2026-corpus"   # private; read-only code required
 # works without the code service — that fallback is deliberate, and it is why
 # both codes stay on the card. See facilitator/code-broker/ for the service.
 BROKER_URL="https://asee-mw-2026-workshop-code.hassell-ade.workers.dev"
-MODEL="openrouter/google/gemini-3.7-flash"
+MODEL="openrouter/google/gemini-3.8-flash"
 # Pinned, not @latest — see .devcontainer/devcontainer.json for why. These
 # must stay in step with the versions postCreate.sh installs.
 OPENCLAW_VERSION="2026.9.2"
